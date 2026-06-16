@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# 临时工作区
+workspace/
+
+# 凭证（绝不提交）
+.cf_token
+
+# 部署缓存
+.deploy-cache.json
+.deploy-cache/

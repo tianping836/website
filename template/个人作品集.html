@@ -1,0 +1,2766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<script>
+window.contextInfo = {"files":[],"materials":[],"crafts":[]};
+// 处理锚点链接跳转（srcDoc iframe 中锚点链接默认行为不正确）
+document.addEventListener('click', function(e) {
+  var anchor = e.target.closest('a');
+  if (anchor) {
+    var href = anchor.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      var targetId = href.slice(1);
+      var target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
+});
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周义军律师 - 全国涉税争议解决专家 | 税务稽查·行政诉讼·刑事辩护</title>
+<meta name="description" content="周义军律师，深耕涉税法律领域15年以上，全国接案。专注税务稽查应对、税务行政诉讼、虚开发票辩护、逃税罪辩护、走私罪辩护，律师+税务师双证，300+成功案例。">
+<meta name="keywords" content="周义军,税务律师,涉税律师,虚开发票辩护,税务行政诉讼,税务稽查,涉税刑事辩护,逃税罪,走私罪,涉税争议">
+<meta name="author" content="周义军律师">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://zhouyijunlawyer.com">
+<meta property="og:title" content="周义军律师 - 全国涉税争议解决专家">
+<meta property="og:description" content="税务稽查·行政诉讼·刑事辩护，15年经验，300+成功案例，全国接案">
+<meta property="og:url" content="https://zhouyijunlawyer.com">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="周义军律师">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="周义军律师 - 全国涉税争议解决专家">
+<meta name="twitter:description" content="税务稽查·行政诉讼·刑事辩护，15年经验，300+成功案例，全国接案">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "周义军律师",
+  "description": "全国涉税争议解决专家，专注税务稽查应对、税务行政诉讼、涉税刑事辩护",
+  "url": "https://zhouyijunlawyer.com",
+  "telephone": "+86-13857739079",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "CN"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "China"
+  },
+  "knowsAbout": ["税务稽查应对", "税务行政诉讼", "虚开发票辩护", "逃税罪辩护", "走私罪辩护", "涉税争议解决"],
+  "priceRange": "咨询了解",
+  "foundingDate": "2009",
+  "founder": {
+    "@type": "Person",
+    "name": "周义军",
+    "jobTitle": "律师",
+    "description": "全国涉税争议解决专家，律师+税务师双证，15年以上涉税法律经验",
+    "knowsAbout": ["税务稽查", "虚开发票", "税务行政诉讼", "涉税刑事辩护"]
+  }
+}
+</script>
+<style>
+  :root {
+    --primary: #0d2340;
+    --primary-light: #1a3a5c;
+    --primary-dark: #081828;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --red: #c0392b;
+    --text-dark: #1a1a2e;
+    --text-mid: #4a5568;
+    --text-light: #718096;
+    --bg-light: #f7f8fc;
+    --bg-white: #ffffff;
+    --border: #e2e8f0;
+    --shadow: 0 4px 20px rgba(13,35,64,0.10);
+    --shadow-lg: 0 8px 40px rgba(13,35,64,0.16);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'SimSun', 'STSong', '宋体', 'Microsoft YaHei', '微软雅黑', serif;
+    color: var(--text-dark);
+    background: var(--bg-white);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f1f1f1; }
+  ::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 3px; }
+
+  /* ===== NAVBAR ===== */
+  #navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(8, 24, 40, 0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    transition: all 0.3s ease;
+  }
+
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .logo-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--primary-dark);
+    font-weight: bold;
+    font-family: 'SimSun', serif;
+    flex-shrink: 0;
+  }
+
+  .logo-text { color: white; }
+  .logo-name {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'SimHei', '黑体', 'Microsoft YaHei', sans-serif;
+    letter-spacing: 2px;
+    color: white;
+  }
+  .logo-sub {
+    font-size: 11px;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    margin-top: 1px;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    list-style: none;
+  }
+
+  .nav-menu a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-family: 'SimHei', '黑体', 'Microsoft YaHei', sans-serif;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    display: block;
+  }
+
+  .nav-menu a:hover {
+    color: var(--gold-light);
+    background: rgba(201,168,76,0.12);
+  }
+
+  .nav-hotline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold-light);
+    font-size: 14px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    white-space: nowrap;
+  }
+
+  .nav-hotline .phone-icon {
+    width: 28px;
+    height: 28px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--primary-dark);
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ===== HERO ===== */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #081828 0%, #0d2340 40%, #1a3a5c 70%, #0d2340 100%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(201,168,76,0.04) 0%, transparent 40%),
+      linear-gradient(45deg, transparent 30%, rgba(201,168,76,0.02) 50%, transparent 70%);
+  }
+
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .hero-lines::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 60px,
+      rgba(201,168,76,0.015) 60px,
+      rgba(201,168,76,0.015) 61px
+    );
+  }
+
+  .hero-scales {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.04;
+    font-size: 320px;
+    color: var(--gold);
+    user-select: none;
+    line-height: 1;
+  }
+
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 120px 24px 80px;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold-light);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 28px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .hero-title {
+    font-size: clamp(28px, 4vw, 52px);
+    color: white;
+    font-family: 'SimHei', '黑体', 'Microsoft YaHei', sans-serif;
+    font-weight: bold;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+  }
+
+  .hero-title .highlight {
+    color: var(--gold-light);
+    position: relative;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(16px, 2vw, 22px);
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 24px;
+    letter-spacing: 4px;
+    font-family: 'SimHei', '黑体', sans-serif;
+  }
+
+  .hero-subtitle span {
+    color: var(--gold-light);
+    margin: 0 4px;
+  }
+
+  .hero-desc {
+    max-width: 640px;
+    color: rgba(255,255,255,0.65);
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 40px;
+    border-left: 3px solid var(--gold);
+    padding-left: 16px;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--primary-dark);
+    padding: 14px 36px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'SimHei', '黑体', sans-serif;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 2px;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: white;
+    padding: 14px 36px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 2px;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold-light);
+    color: var(--gold-light);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+  }
+
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--gold-light);
+    font-family: 'SimHei', '黑体', sans-serif;
+    line-height: 1;
+  }
+  .stat-num sup { font-size: 18px; }
+  .stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 6px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== SECTION COMMON ===== */
+  section { padding: 80px 0; }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 12px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding: 4px 16px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+  }
+
+  .section-title {
+    font-size: clamp(24px, 3vw, 36px);
+    font-family: 'SimHei', '黑体', 'Microsoft YaHei', sans-serif;
+    color: var(--primary);
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+
+  .section-title .gold { color: var(--gold); }
+
+  .section-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    margin: 16px auto 0;
+    border-radius: 2px;
+  }
+
+  .section-desc {
+    color: var(--text-mid);
+    font-size: 15px;
+    max-width: 600px;
+    margin: 16px auto 0;
+    line-height: 1.8;
+  }
+
+  /* ===== PRACTICE AREAS ===== */
+  #practice { background: var(--bg-light); }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .practice-card {
+    background: white;
+    border-radius: 8px;
+    padding: 32px 28px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .practice-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--gold), var(--gold-light));
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    transform-origin: bottom;
+  }
+
+  .practice-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  .practice-card:hover::before { transform: scaleY(1); }
+
+  .practice-card.featured {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-color: var(--primary);
+    color: white;
+  }
+
+  .practice-card.featured .practice-title { color: var(--gold-light); }
+  .practice-card.featured .practice-desc { color: rgba(255,255,255,0.7); }
+  .practice-card.featured .practice-icon { background: rgba(201,168,76,0.2); color: var(--gold-light); }
+
+  .practice-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(13,35,64,0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--primary);
+  }
+
+  .practice-title {
+    font-size: 18px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  .practice-desc {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  /* ===== ADVANTAGES ===== */
+  #advantages {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #advantages::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.01) 40px,
+      rgba(255,255,255,0.01) 41px
+    );
+  }
+
+  #advantages .section-title { color: white; }
+  #advantages .section-tag { color: var(--gold-light); border-color: rgba(201,168,76,0.4); }
+
+  .adv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .adv-card {
+    text-align: center;
+    padding: 40px 24px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+    transition: all 0.3s;
+  }
+
+  .adv-card:hover {
+    background: rgba(201,168,76,0.08);
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-4px);
+  }
+
+  .adv-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .adv-num {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--gold-light);
+    font-family: 'SimHei', '黑体', sans-serif;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .adv-num sup { font-size: 22px; }
+
+  .adv-title {
+    font-size: 16px;
+    color: white;
+    font-family: 'SimHei', '黑体', sans-serif;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  .adv-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+
+  /* ===== CASES ===== */
+  #cases { background: white; }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 28px;
+  }
+
+  .case-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .case-header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .case-type {
+    color: var(--gold-light);
+    font-size: 14px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .case-result {
+    background: rgba(201,168,76,0.2);
+    color: var(--gold-light);
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    border: 1px solid rgba(201,168,76,0.4);
+  }
+
+  .case-body { padding: 24px; }
+
+  .case-title {
+    font-size: 16px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+
+  .case-info {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .case-row {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .case-label {
+    color: var(--gold);
+    font-family: 'SimHei', '黑体', sans-serif;
+    white-space: nowrap;
+    min-width: 56px;
+  }
+
+  .case-text { color: var(--text-mid); line-height: 1.6; }
+
+  .case-tag {
+    display: inline-block;
+    background: rgba(13,35,64,0.06);
+    color: var(--primary);
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-top: 8px;
+    font-family: 'SimHei', '黑体', sans-serif;
+  }
+
+  .cases-note {
+    text-align: center;
+    margin-top: 32px;
+    color: var(--text-light);
+    font-size: 13px;
+    padding: 12px;
+    background: var(--bg-light);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  /* ===== COMICS ===== */
+  #comics { background: var(--bg-light); }
+
+  .comics-intro {
+    text-align: center;
+    color: var(--text-mid);
+    font-size: 15px;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+
+  .comics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .comic-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .comic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+
+  .comic-thumb {
+    height: 180px;
+    background: linear-gradient(135deg, #e8f0fe, #dce8ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .comic-thumb-inner {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .comic-emoji { font-size: 48px; display: block; margin-bottom: 8px; }
+
+  .comic-thumb-title {
+    font-size: 13px;
+    color: var(--primary);
+    font-family: 'SimHei', '黑体', sans-serif;
+    line-height: 1.4;
+  }
+
+  .comic-info { padding: 14px 16px; }
+
+  .comic-title {
+    font-size: 14px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+
+  .comic-meta {
+    font-size: 12px;
+    color: var(--text-light);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ===== ARTICLES ===== */
+  #articles { background: white; }
+
+  .articles-list { display: grid; gap: 20px; }
+
+  .article-card {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .article-card:hover {
+    border-color: rgba(201,168,76,0.4);
+    box-shadow: var(--shadow);
+    background: rgba(201,168,76,0.02);
+  }
+
+  .article-date {
+    flex-shrink: 0;
+    width: 64px;
+    text-align: center;
+    background: var(--primary);
+    color: white;
+    border-radius: 6px;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .article-day {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'SimHei', '黑体', sans-serif;
+    line-height: 1;
+    color: var(--gold-light);
+  }
+
+  .article-month { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+  .article-content { flex: 1; }
+
+  .article-tags { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+
+  .article-tag {
+    background: rgba(13,35,64,0.07);
+    color: var(--primary);
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: 'SimHei', '黑体', sans-serif;
+  }
+
+  .article-title {
+    font-size: 17px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .article-excerpt {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .article-read {
+    color: var(--gold);
+    font-size: 13px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s;
+  }
+
+  .article-card:hover .article-read { gap: 8px; }
+
+  /* ===== LAWS ===== */
+  #laws { background: var(--bg-light); }
+
+  .laws-search {
+    display: flex;
+    gap: 12px;
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+
+  .laws-search input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .laws-search input:focus { border-color: var(--gold); }
+
+  .laws-search button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 1px;
+  }
+
+  .laws-search button:hover { background: var(--primary-light); }
+
+  .laws-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .law-category {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .law-cat-header {
+    background: var(--primary);
+    color: white;
+    padding: 14px 20px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .law-cat-header .cat-icon { font-size: 18px; }
+
+  .law-list { padding: 12px 0; }
+
+  .law-item {
+    padding: 10px 20px;
+    font-size: 13.5px;
+    color: var(--text-mid);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .law-item:last-child { border-bottom: none; }
+
+  .law-item:hover {
+    background: rgba(13,35,64,0.04);
+    color: var(--primary);
+    padding-left: 24px;
+  }
+
+  .law-item::before {
+    content: '›';
+    color: var(--gold);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* ===== LAWYER ===== */
+  #lawyer { background: white; }
+
+  .lawyer-inner {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .lawyer-photo-wrap {
+    position: sticky;
+    top: 100px;
+  }
+
+  .lawyer-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, #e8f0fe 0%, #c8d8f0 100%);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lawyer-photo-placeholder {
+    font-size: 80px;
+    opacity: 0.3;
+    margin-bottom: 16px;
+  }
+
+  .lawyer-photo-label {
+    font-size: 14px;
+    color: var(--text-light);
+    font-family: 'SimHei', '黑体', sans-serif;
+  }
+
+  .lawyer-photo-frame {
+    position: absolute;
+    inset: 8px;
+    border: 2px solid rgba(201,168,76,0.3);
+    border-radius: 6px;
+    pointer-events: none;
+  }
+
+  .lawyer-cert {
+    margin-top: 16px;
+    background: var(--primary);
+    color: var(--gold-light);
+    padding: 12px 16px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 13px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .lawyer-info { padding-top: 8px; }
+
+  .lawyer-name-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .lawyer-name {
+    font-size: 36px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    color: var(--primary);
+    font-weight: bold;
+    letter-spacing: 4px;
+  }
+
+  .lawyer-title-badge {
+    background: var(--gold);
+    color: var(--primary-dark);
+    padding: 3px 12px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    font-weight: bold;
+  }
+
+  .lawyer-firm {
+    color: var(--text-mid);
+    font-size: 15px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .lawyer-details {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .detail-row {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .detail-label {
+    color: var(--gold);
+    font-family: 'SimHei', '黑体', sans-serif;
+    min-width: 84px;
+    flex-shrink: 0;
+  }
+
+  .detail-value { color: var(--text-dark); }
+
+  .lawyer-bio {
+    background: var(--bg-light);
+    padding: 20px 24px;
+    border-radius: 6px;
+    border-left: 4px solid var(--gold);
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.9;
+  }
+
+  .certs-title {
+    font-family: 'SimHei', '黑体', sans-serif;
+    color: var(--primary);
+    font-size: 15px;
+    margin-bottom: 14px;
+    font-weight: bold;
+  }
+
+  .certs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .cert-badge {
+    background: rgba(13,35,64,0.06);
+    border: 1px solid rgba(13,35,64,0.12);
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .cert-badge .cert-icon { font-size: 14px; }
+
+  .lawyer-motto {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    padding: 20px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'SimSun', '宋体', serif;
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 1.8;
+    position: relative;
+  }
+
+  .lawyer-motto::before, .lawyer-motto::after {
+    content: '"';
+    color: var(--gold-light);
+    font-size: 32px;
+    line-height: 0;
+    vertical-align: -12px;
+    font-style: normal;
+  }
+
+  /* ===== PROCESS ===== */
+  #process { background: var(--bg-light); }
+
+  .process-steps {
+    display: flex;
+    gap: 0;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 44px;
+    left: 60px;
+    right: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    z-index: 0;
+  }
+
+  .process-step {
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+    padding: 0 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-circle {
+    width: 88px;
+    height: 88px;
+    background: white;
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(201,168,76,0.2);
+  }
+
+  .process-step:hover .step-circle {
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: scale(1.08);
+  }
+
+  .process-step:hover .step-num { color: var(--gold-light); }
+  .process-step:hover .step-icon { color: var(--gold-light); }
+
+  .step-num {
+    font-size: 11px;
+    color: var(--gold);
+    font-family: 'SimHei', '黑体', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .step-icon { font-size: 24px; color: var(--primary); }
+
+  .step-title {
+    font-size: 15px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 12.5px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* ===== FAQ ===== */
+  #faq { background: white; }
+
+  .faq-list { max-width: 860px; margin: 0 auto; display: grid; gap: 12px; }
+
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .faq-item.open { border-color: rgba(201,168,76,0.4); }
+
+  .faq-question {
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background: white;
+    transition: background 0.2s;
+    gap: 16px;
+  }
+
+  .faq-question:hover { background: rgba(13,35,64,0.02); }
+  .faq-item.open .faq-question { background: rgba(13,35,64,0.03); }
+
+  .faq-q-text {
+    font-size: 15px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    color: var(--primary);
+    font-weight: bold;
+    line-height: 1.4;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .faq-q-num {
+    color: var(--gold);
+    flex-shrink: 0;
+    font-size: 14px;
+    margin-top: 1px;
+  }
+
+  .faq-arrow {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(13,35,64,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    color: var(--primary);
+    font-size: 14px;
+  }
+
+  .faq-item.open .faq-arrow {
+    background: var(--gold);
+    color: white;
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0 24px;
+    background: rgba(247,248,252,0.8);
+  }
+
+  .faq-item.open .faq-answer {
+    max-height: 400px;
+    padding: 16px 24px 20px;
+  }
+
+  .faq-a-text {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.9;
+    border-left: 3px solid var(--gold);
+    padding-left: 14px;
+  }
+
+  /* ===== CONTACT ===== */
+  #contact { background: var(--bg-light); }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .contact-info { }
+
+  .contact-title {
+    font-size: 22px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+  }
+
+  .contact-items { display: grid; gap: 20px; margin-bottom: 32px; }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    color: var(--gold-light);
+  }
+
+  .contact-item-content { }
+
+  .contact-item-label {
+    font-size: 12px;
+    color: var(--text-light);
+    font-family: 'SimHei', '黑体', sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .contact-item-value {
+    font-size: 15px;
+    color: var(--text-dark);
+    font-weight: bold;
+  }
+
+  .contact-qr {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .qr-item {
+    text-align: center;
+  }
+
+  .qr-box {
+    width: 96px;
+    height: 96px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+
+  .qr-label {
+    font-size: 12px;
+    color: var(--text-light);
+    font-family: 'SimHei', '黑体', sans-serif;
+  }
+
+  .contact-form-wrap { }
+
+  .form-title {
+    font-size: 22px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    color: var(--primary);
+    font-weight: bold;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+  }
+
+  .contact-form { display: grid; gap: 16px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-label {
+    font-size: 13px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+  }
+
+  .form-label .required { color: var(--red); margin-left: 2px; }
+
+  .form-input, .form-textarea, .form-select {
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: white;
+  }
+
+  .form-input:focus, .form-textarea:focus, .form-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+  }
+
+  .form-textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 2px;
+    width: 100%;
+  }
+
+  .form-submit:hover {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(13,35,64,0.3);
+  }
+
+  .map-placeholder {
+    height: 280px;
+    background: linear-gradient(135deg, #e8f0fe, #dce8ff);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    color: var(--text-mid);
+    gap: 12px;
+  }
+
+  .map-placeholder .map-icon { font-size: 48px; opacity: 0.5; }
+  .map-placeholder .map-text { font-size: 14px; font-family: 'SimHei', '黑体', sans-serif; }
+  .map-placeholder .map-addr { font-size: 13px; color: var(--text-light); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--primary-dark);
+    color: rgba(255,255,255,0.6);
+    padding: 48px 0 24px;
+  }
+
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 32px;
+  }
+
+  .footer-brand { }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .footer-logo-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--primary-dark);
+    font-weight: bold;
+    font-family: 'SimSun', serif;
+  }
+
+  .footer-logo-name {
+    color: white;
+    font-size: 16px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    letter-spacing: 2px;
+  }
+
+  .footer-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .footer-col-title {
+    color: var(--gold-light);
+    font-size: 14px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+
+  .footer-links { list-style: none; display: grid; gap: 8px; }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-disclaimer {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  /* ===== BACK TO TOP ===== */
+  #backTop {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    background: var(--primary);
+    border: 2px solid var(--gold);
+    color: var(--gold-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 999;
+    box-shadow: 0 4px 16px rgba(13,35,64,0.3);
+  }
+
+  #backTop.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #backTop:hover {
+    background: var(--gold);
+    color: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+
+  /* ===== MOBILE NAV ===== */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: var(--primary-dark);
+    z-index: 999;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    max-height: calc(100vh - 68px);
+    overflow-y: auto;
+  }
+
+  .mobile-menu.open { display: block; }
+
+  .mobile-menu a {
+    display: block;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .mobile-menu a:hover {
+    background: rgba(201,168,76,0.1);
+    color: var(--gold-light);
+    padding-left: 32px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .lawyer-inner { grid-template-columns: 1fr; }
+    .lawyer-photo-wrap { position: static; max-width: 280px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 60px 0; }
+    .nav-menu, .nav-hotline { display: none; }
+    .hamburger { display: flex; }
+    .hero-stats { gap: 28px; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    .article-card { flex-direction: column; }
+    .article-date { width: 100%; flex-direction: row; gap: 8px; padding: 10px 16px; border-radius: 4px 4px 0 0; }
+    .process-step { min-width: 100px; }
+    .process-steps::before { display: none; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: 24px; }
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { text-align: center; }
+    .stat-num { font-size: 28px; }
+    .comics-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in { animation: fadeInUp 0.6s ease forwards; }
+
+  .hero-badge { animation: fadeInUp 0.5s ease 0.1s both; }
+  .hero-title { animation: fadeInUp 0.5s ease 0.2s both; }
+  .hero-subtitle { animation: fadeInUp 0.5s ease 0.3s both; }
+  .hero-desc { animation: fadeInUp 0.5s ease 0.4s both; }
+  .hero-btns { animation: fadeInUp 0.5s ease 0.5s both; }
+  .hero-stats { animation: fadeInUp 0.5s ease 0.6s both; }
+
+  /* Success message */
+  .form-success {
+    background: rgba(39, 174, 96, 0.1);
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    color: #27ae60;
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    display: none;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="navScrollTo('hero')">
+      <div class="logo-icon">律</div>
+      <div class="logo-text">
+        <div class="logo-name">周义军律师</div>
+        <div class="logo-sub">全国涉税争议解决专家</div>
+      </div>
+    </div>
+
+    <ul class="nav-menu">
+      <li><a onclick="navScrollTo('hero')">首页</a></li>
+      <li><a onclick="navScrollTo('practice')">专业领域</a></li>
+      <li><a onclick="navScrollTo('cases')">成功案例</a></li>
+      <li><a onclick="navScrollTo('comics')">普法漫画</a></li>
+      <li><a onclick="navScrollTo('articles')">专业文章</a></li>
+      <li><a onclick="navScrollTo('laws')">法律法规</a></li>
+      <li><a onclick="navScrollTo('lawyer')">律师介绍</a></li>
+      <li><a onclick="navScrollTo('contact')">联系咨询</a></li>
+    </ul>
+
+    <div class="nav-hotline">
+      <div class="phone-icon">📞</div>
+      <div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:1px;">咨询热线</div>
+        <div style="font-size:15px;font-weight:bold;letter-spacing:1px;">13857739079</div>
+      </div>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="navScrollTo('hero');closeMenu()">🏠 首页</a>
+  <a onclick="navScrollTo('practice');closeMenu()">⚖️ 专业领域</a>
+  <a onclick="navScrollTo('cases');closeMenu()">📋 成功案例</a>
+  <a onclick="navScrollTo('comics');closeMenu()">🎨 普法漫画</a>
+  <a onclick="navScrollTo('articles');closeMenu()">📝 专业文章</a>
+  <a onclick="navScrollTo('laws');closeMenu()">📚 法律法规</a>
+  <a onclick="navScrollTo('lawyer');closeMenu()">👤 律师介绍</a>
+  <a onclick="navScrollTo('contact');closeMenu()">📞 联系咨询</a>
+  <div style="padding:16px 24px;color:var(--gold-light);font-family:'SimHei',sans-serif;font-size:15px;">📞 咨询热线：13857739079</div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-scales">⚖</div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span>⚖</span>
+      <span>立足浙江，服务全国 · 专业涉税法律服务</span>
+    </div>
+    <h1 class="hero-title">
+      周义军律师 - 全国<span class="highlight">涉税争议解决</span>专家
+    </h1>
+    <p class="hero-subtitle">
+      税务稽查<span>·</span>行政诉讼<span>·</span>刑事辩护<span>·</span>常年顾问
+    </p>
+    <p class="hero-desc">
+      深耕涉税法律领域十余年，服务范围覆盖全国，专注于税务稽查应对、税务行政诉讼、虚开发票辩护及涉税刑事辩护。以扎实的法律功底和丰富的实战经验，为全国各地企业及个人提供专业、严谨、高效的涉税法律解决方案，可异地办案、全国接案。
+    </p>
+    <div class="hero-btns">
+      <a class="btn-primary" onclick="navScrollTo('contact')">立即咨询</a>
+      <a class="btn-outline" onclick="navScrollTo('lawyer')">了解更多</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">15<sup>+</sup></div>
+        <div class="stat-label">年执业经验</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">300<sup>+</sup></div>
+        <div class="stat-label">成功办理案件</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">98<sup>%</sup></div>
+        <div class="stat-label">当事人满意度</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50<sup>+</sup></div>
+        <div class="stat-label">常年顾问企业</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE AREAS -->
+<section id="practice">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">PRACTICE AREAS</div>
+      <h2 class="section-title">专业<span class="gold">服务领域</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">深耕涉税法律领域，提供全方位专业法律服务，保障您的合法权益</p>
+    </div>
+    <div class="practice-grid">
+      <div class="practice-card">
+        <div class="practice-icon">🔍</div>
+        <div class="practice-title">税务稽查应对</div>
+        <div class="practice-desc">协助企业应对税务机关稽查，制定应对策略，审查稽查程序合法性，保护纳税人合法权益，降低税务风险。</div>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🏛</div>
+        <div class="practice-title">税务行政诉讼</div>
+        <div class="practice-desc">代理税务行政复议及行政诉讼案件，对违法税务处理决定、处罚决定提出有效救济，维护纳税人权利。</div>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">📄</div>
+        <div class="practice-title">虚开发票辩护</div>
+        <div class="practice-desc">专注虚开增值税专用发票案件辩护，深入分析主观故意、客观行为，提供精准有效的刑事辩护方案。</div>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">⚖️</div>
+        <div class="practice-title">逃税罪辩护</div>
+        <div class="practice-desc">针对逃税罪指控，从主观要件、客观行为、初次违法补缴等角度构建辩护体系，争取最优辩护结果。</div>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🛡</div>
+        <div class="practice-title">骗税罪辩护</div>
+        <div class="practice-desc">代理出口退税骗税等案件，从行为认定、主观故意、数额计算等关键节点进行专业辩护。</div>
+      </div>
+      <div class="practice-card">
+        <div class="practice-icon">🚢</div>
+        <div class="practice-title">走私罪辩护</div>
+        <div class="practice-desc">代理走私普通货物物品罪等涉税走私案件，结合海关法规与刑事法律，提供专业辩护服务。</div>
+      </div>
+      <div class="practice-card featured">
+        <div class="practice-icon">🤝</div>
+        <div class="practice-title">常年法律顾问</div>
+        <div class="practice-desc">为企业提供常年涉税法律顾问服务，包括税务合规审查、涉税风险预防、重大交易税务筹划及日常法律咨询，构建全面税务风险防控体系。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVANTAGES -->
+<section id="advantages">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">OUR ADVANTAGES</div>
+      <h2 class="section-title" style="color:white;">核心<span style="color:var(--gold-light);">优势</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-card">
+        <span class="adv-icon">⚖️</span>
+        <div class="adv-num">15<sup>+</sup></div>
+        <div class="adv-title">年涉税案件经验</div>
+        <div class="adv-desc">深耕涉税法律领域十五年以上，积累丰富的税务稽查、行政诉讼及刑事辩护实战经验</div>
+      </div>
+      <div class="adv-card">
+        <span class="adv-icon">📋</span>
+        <div class="adv-num">300<sup>+</sup></div>
+        <div class="adv-title">成功办理案件</div>
+        <div class="adv-desc">成功代理三百余件涉税争议案件，涵盖税务行政复议、行政诉讼及各类涉税刑事案件</div>
+      </div>
+      <div class="adv-card">
+        <span class="adv-icon">🌏</span>
+        <div class="adv-num" style="font-size:28px;">全国</div>
+        <div class="adv-title">全国涉税案件办理经验</div>
+        <div class="adv-desc">立足浙江，服务全国，可异地办案、全国接案，熟悉各地税务机关执法惯例，为各地当事人提供专业涉税法律服务</div>
+      </div>
+      <div class="adv-card">
+        <span class="adv-icon">🏛️</span>
+        <div class="adv-num" style="font-size:28px;">双证</div>
+        <div class="adv-title">律师+税务师双重专业背景</div>
+        <div class="adv-desc">同时持有律师资格证书与税务师资格证书，省市律协财税专委会核心成员，律所财税中心主任，团队支持，从法律与税务双维度为您提供更精准的涉税法律服务</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">SUCCESS CASES</div>
+      <h2 class="section-title">成功<span class="gold">案例</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">以下案例均已进行脱敏处理，仅供参考</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-header">
+          <span class="case-type">虚开增值税专用发票罪</span>
+          <span class="case-result">无罪辩护</span>
+        </div>
+        <div class="case-body">
+          <div class="case-title">某贸易公司负责人虚开发票案</div>
+          <div class="case-info">
+            <div class="case-row">
+              <span class="case-label">案情简介</span>
+              <span class="case-text">当事人系某贸易公司负责人，被指控为他人虚开增值税专用发票，涉案金额逾千万元，面临十年以上有期徒刑。</span>
+            </div>
+            <div class="case-row">
+              <span class="case-label">辩护策略</span>
+              <span class="case-text">深入调查交易背景，证明业务真实性；从主观故意缺失角度构建辩护，并对税款损失数额提出异议。</span>
+            </div>
+            <div class="case-row">
+              <span class="case-label">案件结果</span>
+              <span class="case-text">检察院作出不起诉决定，当事人获释，避免了刑事追诉。</span>
+            </div>
+          </div>
+          <span class="case-tag">不起诉 · 无罪</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <span class="case-type">税务行政诉讼</span>
+          <span class="case-result">胜诉撤销</span>
+        </div>
+        <div class="case-body">
+          <div class="case-title">某制造企业税务处罚决定撤销案</div>
+          <div class="case-info">
+            <div class="case-row">
+              <span class="case-label">案情简介</span>
+              <span class="case-text">税务机关对某制造企业作出补缴税款及罚款决定，合计金额超过八百万元，企业认为处理决定存在事实认定错误。</span>
+            </div>
+            <div class="case-row">
+              <span class="case-label">辩护策略</span>
+              <span class="case-text">审查稽查程序合法性，收集大量交易凭证，就税务机关事实认定错误提出行政复议，后提起行政诉讼。</span>
+            </div>
+            <div class="case-row">
+              <span class="case-label">案件结果</span>
+              <span class="case-text">法院判决撤销税务处理决定，企业成功避免巨额税款损失。</span>
+            </div>
+          </div>
+          <span class="case-tag">行政诉讼 · 胜诉</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <span class="case-type">逃税罪</span>
+          <span class="case-result">缓刑适用</span>
+        </div>
+        <div class="case-body">
+          <div class="case-title">某企业主逃税罪从轻处理案</div>
+          <div class="case-info">
+            <div class="case-row">
+              <span class="case-label">案情简介</span>
+              <span class="case-text">当事人系某私营企业主，因多年未如实申报纳税，被认定逃税数额较大，面临三年以上有期徒刑。</span>
+            </div>
+            <div class="case-row">
+              <span class="case-label">辩护策略</span>
+              <span class="case-text">协助当事人补缴全部税款及滞纳金，争取适用初次违法免责条款，并就主观恶性程度进行充分辩护。</span>
+            </div>
+            <div class="case-row">
+              <span class="case-label">案件结果</span>
+              <span class="case-text">法院判处有期徒刑三年，缓刑四年，当事人免于实际服刑。</span>
+            </div>
+          </div>
+          <span class="case-tag">逃税罪 · 缓刑</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-header">
+          <span class="case-type">走私普通货物罪</span>
+          <span class="case-result">罪轻辩护</span>
+        </div>
+        <div class="case-body">
+          <div class="case-title">某进出口企业走私案罪轻辩护</div>
+          <div class="case-info">
+            <div class="case-row">
+              <span class="case-label">案情简介</span>
+              <span class="case-text">某进出口公司涉嫌走私普通货物，被指控偷逃税款数额巨大，多名员工被采取强制措施。</span>
+            </div>
+            <div class="case-row">
+              <span class="case-label">辩护策略</span>
+              <span class="case-text">重新核算偷逃税款数额，对关税完税价格认定提出异议，区分主从犯责任，争取从宽处理。</span>
+            </div>
+            <div class="case-row">
+              <span class="case-label">案件结果</span>
+              <span class="case-text">成功将主犯量刑从十年以上降至五年，从犯获缓刑处理。</span>
+            </div>
+          </div>
+          <span class="case-tag">走私罪 · 量刑减轻</span>
+        </div>
+      </div>
+    </div>
+    <div class="cases-note">⚠️ 以上案例均已进行脱敏处理，隐去当事人真实信息，仅供了解律师专业能力参考，不构成对案件结果的承诺。</div>
+  </div>
+</section>
+
+<!-- COMICS -->
+<section id="comics">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">LEGAL COMICS</div>
+      <h2 class="section-title">普法漫画 · <span class="gold">让法律更易懂</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">通过生动有趣的漫画形式，为您解读复杂的涉税法律问题，让法律知识触手可及</p>
+    </div>
+    <div class="comics-grid">
+      <div class="comic-card">
+        <div class="comic-thumb" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2)">
+          <div class="comic-thumb-inner">
+            <span class="comic-emoji">🧾</span>
+            <div class="comic-thumb-title">收到税务稽查通知书<br>该怎么办？</div>
+          </div>
+        </div>
+        <div class="comic-info">
+          <div class="comic-title">收到稽查通知书怎么办</div>
+          <div class="comic-meta"><span>涉税常识</span><span>2024-03</span></div>
+        </div>
+      </div>
+      <div class="comic-card">
+        <div class="comic-thumb" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9)">
+          <div class="comic-thumb-inner">
+            <span class="comic-emoji">📊</span>
+            <div class="comic-thumb-title">虚开发票的<br>法律风险</div>
+          </div>
+        </div>
+        <div class="comic-info">
+          <div class="comic-title">虚开发票的法律风险</div>
+          <div class="comic-meta"><span>刑事风险</span><span>2024-02</span></div>
+        </div>
+      </div>
+      <div class="comic-card">
+        <div class="comic-thumb" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb)">
+          <div class="comic-thumb-inner">
+            <span class="comic-emoji">⚖️</span>
+            <div class="comic-thumb-title">税务行政复议<br>全流程解析</div>
+          </div>
+        </div>
+        <div class="comic-info">
+          <div class="comic-title">税务行政复议全流程</div>
+          <div class="comic-meta"><span>行政救济</span><span>2024-01</span></div>
+        </div>
+      </div>
+      <div class="comic-card">
+        <div class="comic-thumb" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0)">
+          <div class="comic-thumb-inner">
+            <span class="comic-emoji">🏢</span>
+            <div class="comic-thumb-title">企业税务合规<br>自查清单</div>
+          </div>
+        </div>
+        <div class="comic-info">
+          <div class="comic-title">企业税务合规自查清单</div>
+          <div class="comic-meta"><span>合规管理</span><span>2023-12</span></div>
+        </div>
+      </div>
+      <div class="comic-card">
+        <div class="comic-thumb" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7)">
+          <div class="comic-thumb-inner">
+            <span class="comic-emoji">🔒</span>
+            <div class="comic-thumb-title">逃税与合理避税<br>的边界在哪里</div>
+          </div>
+        </div>
+        <div class="comic-info">
+          <div class="comic-title">逃税与合理避税的边界</div>
+          <div class="comic-meta"><span>法律边界</span><span>2023-11</span></div>
+        </div>
+      </div>
+      <div class="comic-card">
+        <div class="comic-thumb" style="background:linear-gradient(135deg,#e0f7fa,#b2ebf2)">
+          <div class="comic-thumb-inner">
+            <span class="comic-emoji">🛡️</span>
+            <div class="comic-thumb-title">纳税人的<br>十大法定权利</div>
+          </div>
+        </div>
+        <div class="comic-info">
+          <div class="comic-title">纳税人的十大法定权利</div>
+          <div class="comic-meta"><span>权利保障</span><span>2023-10</span></div>
+        </div>
+      </div>
+      <div class="comic-card">
+        <div class="comic-thumb" style="background:linear-gradient(135deg,#fff8e1,#ffecb3)">
+          <div class="comic-thumb-inner">
+            <span class="comic-emoji">📝</span>
+            <div class="comic-thumb-title">税务处罚决定书<br>如何应对</div>
+          </div>
+        </div>
+        <div class="comic-info">
+          <div class="comic-title">税务处罚决定书如何应对</div>
+          <div class="comic-meta"><span>应对指南</span><span>2023-09</span></div>
+        </div>
+      </div>
+      <div class="comic-card">
+        <div class="comic-thumb" style="background:linear-gradient(135deg,#efebe9,#d7ccc8)">
+          <div class="comic-thumb-inner">
+            <span class="comic-emoji">🚢</span>
+            <div class="comic-thumb-title">走私罪的<br>认定与辩护要点</div>
+          </div>
+        </div>
+        <div class="comic-info">
+          <div class="comic-title">走私罪的认定与辩护要点</div>
+          <div class="comic-meta"><span>刑事辩护</span><span>2023-08</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section id="articles">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">PROFESSIONAL ARTICLES</div>
+      <h2 class="section-title">专业文章与<span class="gold">法律解析</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">深度解析涉税法律问题，分享专业实务经验与法律观点</p>
+    </div>
+    <div class="articles-list">
+      <div class="article-card">
+        <div class="article-date">
+          <div class="article-day">15</div>
+          <div class="article-month">2024年3月</div>
+        </div>
+        <div class="article-content">
+          <div class="article-tags">
+            <span class="article-tag">虚开发票</span>
+            <span class="article-tag">刑事辩护</span>
+          </div>
+          <div class="article-title">论虚开增值税专用发票罪中"主观故意"的认定——以近年司法实践为视角</div>
+          <div class="article-excerpt">虚开增值税专用发票罪的认定，主观故意是核心要件。实践中，部分案件存在将客观行为直接推定主观故意的倾向，忽视了对当事人主观认识的实质审查。本文从司法实践出发，梳理主观故意认定的裁判规则……</div>
+          <span class="article-read">阅读全文 →</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-date">
+          <div class="article-day">28</div>
+          <div class="article-month">2024年2月</div>
+        </div>
+        <div class="article-content">
+          <div class="article-tags">
+            <span class="article-tag">税务稽查</span>
+            <span class="article-tag">程序合法性</span>
+          </div>
+          <div class="article-title">税务稽查程序违法的认定标准与救济路径研究</div>
+          <div class="article-excerpt">税务稽查程序的合法性直接影响稽查结论的效力。实践中，税务机关在稽查过程中存在超期限、未履行告知义务、证据收集程序违规等问题。本文系统梳理稽查程序违法的认定标准及相应的法律救济途径……</div>
+          <span class="article-read">阅读全文 →</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-date">
+          <div class="article-day">10</div>
+          <div class="article-month">2024年1月</div>
+        </div>
+        <div class="article-content">
+          <div class="article-tags">
+            <span class="article-tag">逃税罪</span>
+            <span class="article-tag">初次违法</span>
+          </div>
+          <div class="article-title">逃税罪"初次违法补缴税款免予追诉"条款的适用边界</div>
+          <div class="article-excerpt">《刑法》第二百零一条第四款规定了逃税罪的特殊免责条款，但司法实践中对该条款的适用存在较大分歧。本文从立法目的、文义解释及司法实践三个维度，深入探讨该条款的适用条件与边界……</div>
+          <span class="article-read">阅读全文 →</span>
+        </div>
+      </div>
+
+      <div class="article-card">
+        <div class="article-date">
+          <div class="article-day">05</div>
+          <div class="article-month">2023年12月</div>
+        </div>
+        <div class="article-content">
+          <div class="article-tags">
+            <span class="article-tag">走私罪</span>
+            <span class="article-tag">税款核算</span>
+          </div>
+          <div class="article-title">走私普通货物物品罪中偷逃税款数额的核算争议与辩护策略</div>
+          <div class="article-excerpt">走私普通货物物品罪的量刑以偷逃税款数额为核心标准，而税款核算方法直接影响定罪量刑。本文分析实践中常见的税款核算争议，并提出相应的辩护策略，为涉案当事人提供参考……</div>
+          <span class="article-read">阅读全文 →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAWS -->
+<section id="laws">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">LEGAL DATABASE</div>
+      <h2 class="section-title">涉税法律法规<span class="gold">速查</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">常用涉税法律法规分类索引，点击链接在权威数据库搜索查看全文</p>
+    </div>
+    <div class="laws-categories">
+      <div class="law-category">
+        <div class="law-cat-header">
+          <span class="cat-icon">⚖️</span>
+          涉税刑事法律
+        </div>
+        <div class="law-list">
+          <a href="https://flk.npc.gov.cn/search.html?keyword=刑法+危害税收征管" target="_blank" class="law-item">《刑法》涉税条款 — 逃税罪、虚开发票罪、骗取出口退税罪等（第201-212条）</a>
+          <a href="https://flk.npc.gov.cn/search.html?keyword=虚开增值税专用发票+定罪量刑" target="_blank" class="law-item">最高法《虚开增值税专用发票定罪量刑标准通知》</a>
+          <a href="https://flk.npc.gov.cn/search.html?keyword=危害税收征管+刑事案件+司法解释" target="_blank" class="law-item">两高《关于办理危害税收征管刑事案件适用法律若干问题的解释》</a>
+        </div>
+      </div>
+      <div class="law-category">
+        <div class="law-cat-header">
+          <span class="cat-icon">📋</span>
+          税收征管法律
+        </div>
+        <div class="law-list">
+          <a href="https://flk.npc.gov.cn/search.html?keyword=税收征收管理法" target="_blank" class="law-item">《税收征收管理法》 — 税款征收、税务稽查、强制执行、纳税争议</a>
+          <a href="https://flk.npc.gov.cn/search.html?keyword=税收征收管理法实施细则" target="_blank" class="law-item">《税收征收管理法实施细则》 — 税务登记、账簿凭证、纳税申报</a>
+          <a href="https://www.chinatax.gov.cn/chinatax/n810341/n810825/c101434/c28479830/content.html" target="_blank" class="law-item">《税务稽查案件办理程序规定》 — 稽查选案、检查、审理、执行（税务总局原文）</a>
+        </div>
+      </div>
+      <div class="law-category">
+        <div class="law-cat-header">
+          <span class="cat-icon">🏛</span>
+          行政复议与诉讼
+        </div>
+        <div class="law-list">
+          <a href="https://flk.npc.gov.cn/search.html?keyword=行政复议法" target="_blank" class="law-item">《行政复议法》 — 对税务处理决定、处罚决定的复议救济途径</a>
+          <a href="https://flk.npc.gov.cn/search.html?keyword=行政诉讼法" target="_blank" class="law-item">《行政诉讼法》 — 税务行政诉讼的起诉、审理与判决</a>
+          <a href="https://www.chinatax.gov.cn/chinatax/n810341/n810825/c101434/c15250/content.html" target="_blank" class="law-item">《税务行政复议规则》 — 纳税争议复议前置、清税前置的适用规则（税务总局原文）</a>
+        </div>
+      </div>
+      <div class="law-category">
+        <div class="law-cat-header">
+          <span class="cat-icon">💼</span>
+          增值税与发票
+        </div>
+        <div class="law-list">
+          <a href="https://flk.npc.gov.cn/search.html?keyword=增值税法" target="_blank" class="law-item">《增值税法》 — 2026年施行，增值税基本制度与征管规则</a>
+          <a href="https://www.chinatax.gov.cn/chinatax/n810341/n810825/c101434/c5142310/content.html" target="_blank" class="law-item">《发票管理办法》 — 发票印制、领购、开具、保管规范（税务总局原文）</a>
+          <a href="https://www.chinatax.gov.cn/chinatax/n810341/n810825/c101434/c5142310/content.html" target="_blank" class="law-item">《增值税专用发票使用规定》 — 专票领购、开具、认证、抵扣规则</a>
+        </div>
+      </div>
+      <div class="law-category">
+        <div class="law-cat-header">
+          <span class="cat-icon">📊</span>
+          企业与个人所得税
+        </div>
+        <div class="law-list">
+          <a href="https://flk.npc.gov.cn/search.html?keyword=企业所得税法" target="_blank" class="law-item">《企业所得税法》 — 应纳税所得额、税前扣除、特别纳税调整</a>
+          <a href="https://flk.npc.gov.cn/search.html?keyword=个人所得税法" target="_blank" class="law-item">《个人所得税法》 — 综合所得、经营所得、财产转让所得纳税规则</a>
+        </div>
+      </div>
+      <div class="law-category">
+        <div class="law-cat-header">
+          <span class="cat-icon">🚢</span>
+          海关与跨境税收
+        </div>
+        <div class="law-list">
+          <a href="https://flk.npc.gov.cn/search.html?keyword=海关法" target="_blank" class="law-item">《海关法》 — 关税征收、通关监管、走私行为的认定与处罚</a>
+          <a href="https://flk.npc.gov.cn/search.html?keyword=关税法" target="_blank" class="law-item">《关税法》 — 2024年施行，进出口关税全新立法体系</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LAWYER -->
+<section id="lawyer">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">ABOUT LAWYER</div>
+      <h2 class="section-title">律师<span class="gold">介绍</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="lawyer-inner">
+      <div class="lawyer-photo-wrap">
+        <div class="lawyer-photo">
+          <div class="lawyer-photo-frame"></div>
+          <div class="lawyer-photo-placeholder">👤</div>
+          <div class="lawyer-photo-label">律师形象照片</div>
+        </div>
+        <div class="lawyer-cert">
+          <div style="font-size:11px;opacity:0.7;margin-bottom:4px;letter-spacing:2px;">执业证号</div>
+          <div style="font-size:14px;letter-spacing:1px;">13303201110871640</div>
+        </div>
+      </div>
+      <div class="lawyer-info">
+        <div class="lawyer-name-row">
+          <div class="lawyer-name">周义军</div>
+          <div class="lawyer-title-badge">专职律师 · 双证律师</div>
+        </div>
+        <div class="lawyer-firm">浙江六和（温州）律师事务所 · 立足浙江，服务全国 · 涉税争议解决专业律师</div>
+        <div class="lawyer-details">
+          <div class="detail-row">
+            <span class="detail-label">执业机构</span>
+            <span class="detail-value">浙江六和（温州）律师事务所</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">执业证号</span>
+            <span class="detail-value">13303201110871640</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">专业资质</span>
+            <span class="detail-value">律师资格证书 + 税务师资格证书（双证）</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">律所职务</span>
+            <span class="detail-value">管委会成员、副主任、财税中心主任</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">协会职务</span>
+            <span class="detail-value">温州市律师协会财税专业委员会主任<br>浙江省律师协会财税法专业委员会委员<br>温州市律师协会刑事辩护专业委员会委员</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">执业地点</span>
+            <span class="detail-value">温州市鹿城区府东路476号宏国大厦11楼（可接受全国委托）</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">执业理念</span>
+            <span class="detail-value">专业专注，维护当事人合法权益</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">专业方向</span>
+            <span class="detail-value">涉税争议解决、税务稽查应对、涉税刑事辩护</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">联系方式</span>
+            <span class="detail-value">13857739079（微信同号）</span>
+          </div>
+        </div>
+        <div class="lawyer-bio">
+        周义军律师专注于涉税法律争议解决领域，执业于浙江六和（温州）律师事务所，持有律师资格证书与税务师资格证书（双证），具备法律与税务的双重专业背景。现任律所管委会成员、副主任、财税中心主任，担任温州市律师协会财税专业委员会主任、浙江省律师协会财税法专业委员会委员，是省市律协财税专委会核心成员。服务范围覆盖全国，可异地办案、全国接案，专注于税务稽查应对、税务行政复议及诉讼、虚开发票辩护、逃税罪辩护等涉税争议解决领域。周律师秉持"专业专注，维护当事人合法权益"的执业理念，以严谨的法律逻辑、扎实的专业功底和高度的职业责任感，赢得了全国各地众多当事人的高度信任与好评。
+        </div>
+        <div class="certs-title">专业资质与荣誉</div>
+        <div class="certs-grid">
+          <div class="cert-badge"><span class="cert-icon">🏅</span>中华人民共和国律师执业证</div>
+          <div class="cert-badge" style="background:linear-gradient(135deg,rgba(201,168,76,0.25),rgba(201,168,76,0.1));border-color:var(--gold);"><span class="cert-icon">📜</span>税务师资格证书 · 双证律师</div>
+          <div class="cert-badge"><span class="cert-icon">🏆</span>律师+税务师双重专业背景</div>
+          <div class="cert-badge"><span class="cert-icon">⭐</span>全国涉税争议解决专业律师</div>
+          <div class="cert-badge"><span class="cert-icon">📋</span>执业证号：13303201110871640</div>
+          <div class="cert-badge"><span class="cert-icon">🎓</span>浙江六和（温州）律师事务所</div>
+        </div>
+        <div class="certs-title" style="margin-top:24px;">重要职务</div>
+        <div class="certs-grid">
+          <div class="cert-badge" style="background:linear-gradient(135deg,rgba(13,35,64,0.10),rgba(13,35,64,0.04));border-color:var(--primary);"><span class="cert-icon">🏛</span>律所管委会成员、副主任</div>
+          <div class="cert-badge" style="background:linear-gradient(135deg,rgba(13,35,64,0.10),rgba(13,35,64,0.04));border-color:var(--primary);"><span class="cert-icon">💼</span>律所财税中心主任</div>
+          <div class="cert-badge" style="background:linear-gradient(135deg,rgba(201,168,76,0.25),rgba(201,168,76,0.1));border-color:var(--gold);"><span class="cert-icon">⚖️</span>温州市律协财税专委会主任</div>
+          <div class="cert-badge" style="background:linear-gradient(135deg,rgba(201,168,76,0.20),rgba(201,168,76,0.08));border-color:var(--gold);"><span class="cert-icon">📌</span>浙江省律协财税法专委会委员</div>
+          <div class="cert-badge"><span class="cert-icon">🔖</span>温州市律协刑事辩护专委会委员</div>
+          <div class="cert-badge" style="background:linear-gradient(135deg,rgba(13,35,64,0.10),rgba(13,35,64,0.04));border-color:var(--primary);"><span class="cert-icon">🌏</span>立足浙江，服务全国</div>
+        </div>
+        <div class="lawyer-motto">
+          专业专注，维护当事人合法权益；<br>律师+税务师双证，省市律协财税专委会核心成员，为全国各地当事人提供更专业的涉税法律服务。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">SERVICE PROCESS</div>
+      <h2 class="section-title">委托<span class="gold">流程</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">规范透明的服务流程，保障您的权益，确保案件高效推进</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-circle">
+          <div class="step-num">STEP 01</div>
+          <div class="step-icon">💬</div>
+        </div>
+        <div class="step-title">咨询沟通</div>
+        <div class="step-desc">电话或当面咨询，了解案件基本情况，初步判断法律风险</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          <div class="step-num">STEP 02</div>
+          <div class="step-icon">🔍</div>
+        </div>
+        <div class="step-title">案件评估</div>
+        <div class="step-desc">深入分析案件事实，评估法律风险，提出初步法律意见</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          <div class="step-num">STEP 03</div>
+          <div class="step-icon">📝</div>
+        </div>
+        <div class="step-title">签订协议</div>
+        <div class="step-desc">明确委托事项、服务内容及费用，签订委托代理协议</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          <div class="step-num">STEP 04</div>
+          <div class="step-icon">🗺</div>
+        </div>
+        <div class="step-title">制定方案</div>
+        <div class="step-desc">深入研究案情，制定详细的法律策略和辩护/代理方案</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          <div class="step-num">STEP 05</div>
+          <div class="step-icon">⚖️</div>
+        </div>
+        <div class="step-title">案件办理</div>
+        <div class="step-desc">全程负责案件办理，定期向委托人反馈案件进展情况</div>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          <div class="step-num">STEP 06</div>
+          <div class="step-icon">✅</div>
+        </div>
+        <div class="step-title">结案反馈</div>
+        <div class="step-desc">案件结束后出具结案报告，提供后续风险防范建议</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">常见<span class="gold">问题解答</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">整理涉税法律领域常见问题，提供专业解答</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-text"><span class="faq-q-num">Q1</span>收到税务稽查通知书后，应该如何应对？</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-a-text">收到税务稽查通知书后，首先应保持冷静，不要擅自销毁或转移账簿、凭证等资料。建议第一时间咨询专业税务律师，由律师协助梳理财务状况，评估潜在风险。在与税务机关沟通时，应注意保护自身陈述权、申辩权等合法权利，对于税务机关的询问，应在律师指导下如实、谨慎地回答，避免因不当陈述引发更大风险。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-text"><span class="faq-q-num">Q2</span>虚开增值税专用发票一定构成犯罪吗？</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-a-text">不一定。虚开增值税专用发票罪的成立需要同时满足主观故意和客观行为两个要件。如果当事人确有真实的业务往来，只是在发票开具形式上存在不规范，或者当事人对虚开行为并不知情，则可能不构成犯罪。此外，虚开金额较小、情节轻微的，也可能不予追诉。建议及时委托专业律师进行案件分析，制定针对性的辩护策略。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-text"><span class="faq-q-num">Q3</span>对税务机关的处理决定不服，有哪些救济途径？</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-a-text">对税务机关的处理决定不服，可以通过以下途径寻求救济：一是申请税务行政复议，应在收到处理决定书之日起60日内向上级税务机关或本级政府申请；二是提起行政诉讼，对行政复议决定不服的，可在收到复议决定书之日起15日内向人民法院提起诉讼；三是对于涉及税款的争议，还可在缴纳税款及滞纳金后直接提起行政诉讼。建议在时效期内尽快咨询律师，以免错过救济期限。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-text"><span class="faq-q-num">Q4</span>逃税罪是否可以通过补缴税款来免于追诉？</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-a-text">根据《刑法》第二百零一条第四款规定，逃税行为经税务机关依法下达追缴通知后，补缴应纳税款、缴纳滞纳金，已受行政处罚的，不予追究刑事责任。但该免责条款有严格限制：仅适用于初次违法，且须在税务机关启动刑事追诉程序前完成补缴。如果当事人曾因逃税受过刑事处罚，或税务机关已将案件移送公安机关，则该条款可能无法适用。具体情况需由律师结合案件实际进行判断。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-text"><span class="faq-q-num">Q5</span>企业如何防范涉税法律风险？</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-a-text">企业防范涉税法律风险，建议从以下几个方面着手：一是建立健全内部财务制度，规范账簿凭证管理；二是严格把控发票管理，确保发票开具与实际业务相符；三是定期开展税务合规自查，及时发现并纠正潜在问题；四是重大交易前进行税务筹划，避免因税务处理不当引发风险；五是聘请专业税务律师担任常年法律顾问，提供日常涉税法律咨询和风险预警服务。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-text"><span class="faq-q-num">Q6</span>税务稽查期间，纳税人有哪些法定权利？</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-a-text">税务稽查期间，纳税人依法享有以下主要权利：知情权（了解稽查依据和程序）、陈述权和申辩权（对稽查结论提出意见）、要求回避权（稽查人员与案件有利害关系时）、保密权（商业秘密受法律保护）、申请行政复议和提起行政诉讼权、申请国家赔偿权等。在稽查过程中，纳税人应积极行使上述权利，必要时委托律师参与，以保障自身合法权益不受侵害。</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <div class="faq-q-text"><span class="faq-q-num">Q7</span>委托律师代理涉税案件，大概需要多少费用？</div>
+          <div class="faq-arrow">▼</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-a-text">律师费用因案件类型、复杂程度、工作量等因素而有所不同。一般而言，税务行政复议案件费用相对较低，行政诉讼案件居中，刑事辩护案件（尤其是重大复杂案件）费用较高。具体收费标准参照浙江省律师协会相关规定，并结合案件实际情况协商确定。建议先进行免费初步咨询，由律师了解案情后，再就收费标准进行详细说明。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">CONTACT US</div>
+      <h2 class="section-title">联系<span class="gold">咨询</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">欢迎通过以下方式与我们取得联系，我们将尽快回复您的咨询</p>
+    </div>
+    <div class="contact-inner">
+      <div class="contact-info">
+        <div class="contact-title">联系方式</div>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-item-content">
+              <div class="contact-item-label">执业机构</div>
+              <div class="contact-item-value">浙江六和（温州）律师事务所</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-content">
+              <div class="contact-item-label">办公地址</div>
+              <div class="contact-item-value">温州市鹿城区府东路476号宏国大厦11楼（可接受全国委托）</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-item-content">
+              <div class="contact-item-label">咨询电话</div>
+              <div class="contact-item-value">13857739079<br><span style="font-size:13px;opacity:0.8;">微信号：13857739079（手机号同号）</span></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div class="contact-item-content">
+              <div class="contact-item-label">电子邮箱</div>
+              <div class="contact-item-value">（邮箱可后续填写）</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-item-content">
+              <div class="contact-item-label">工作时间</div>
+              <div class="contact-item-value">周一至周五 09:00–18:00<br>紧急事务可电话联系</div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-qr">
+          <div class="qr-item">
+            <div class="qr-box">💬</div>
+            <div class="qr-label">微信公众号</div>
+          </div>
+          <div class="qr-item">
+            <div class="qr-box">📱</div>
+            <div class="qr-label">微信扫码咨询</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <div class="form-title">在线咨询</div>
+        <form class="contact-form" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">您的姓名<span class="required">*</span></label>
+              <input class="form-input" type="text" placeholder="请输入您的姓名" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">联系电话<span class="required">*</span></label>
+              <input class="form-input" type="tel" placeholder="请输入您的电话号码" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">案件类型</label>
+            <select class="form-select">
+              <option value="">请选择案件类型</option>
+              <option>税务稽查应对</option>
+              <option>税务行政复议/诉讼</option>
+              <option>虚开发票辩护</option>
+              <option>逃税罪辩护</option>
+              <option>骗税罪辩护</option>
+              <option>走私罪辩护</option>
+              <option>常年法律顾问</option>
+              <option>其他涉税问题</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">咨询内容<span class="required">*</span></label>
+            <textarea class="form-textarea" placeholder="请简要描述您的案件情况或咨询问题，我们将尽快与您联系..." required></textarea>
+          </div>
+          <div style="font-size:12px;color:var(--text-light);line-height:1.6;padding:10px 14px;background:rgba(13,35,64,0.04);border-radius:4px;border-left:3px solid var(--gold);">
+            🔒 您提交的信息受律师保密义务保护，我们将严格保密，不会泄露给任何第三方。
+          </div>
+          <button type="submit" class="form-submit">提交咨询 →</button>
+          <div class="form-success" id="formSuccess">✅ 您的咨询已成功提交！我们将在1个工作日内与您联系，感谢您的信任。</div>
+        </form>
+      </div>
+    </div>
+
+    <div class="map-placeholder">
+      <div class="map-icon">🗺️</div>
+      <div class="map-text">浙江省温州市鹿城区 · 立足浙江，服务全国</div>
+      <div class="map-addr">（地图嵌入区域 · 具体地址请联系确认）</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-disclaimer">
+      ⚠️ 执业声明：本网站内容仅供法律知识参考，不构成具体法律意见。网站所展示案例均已脱敏处理，案件结果因个案情况不同而有所差异，不构成对案件结果的任何承诺或保证。如需法律帮助，请直接联系律师进行专业咨询。
+    </div>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">律</div>
+          <div class="footer-logo-name">周义军律师</div>
+        </div>
+        <div class="footer-desc">
+          浙江六和（温州）律师事务所专职律师，律所管委会成员、副主任、财税中心主任，持有律师资格证书与税务师资格证书（双证），立足浙江，服务全国，专注涉税争议解决，为全国各地企业及个人提供专业税务法律服务。
+        </div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.4);">
+          📞 13857739079<br>
+          📍 浙江省温州市鹿城区府东路476号宏国大厦11楼
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">专业领域</div>
+        <ul class="footer-links">
+          <li><a onclick="navScrollTo('practice')">税务稽查应对</a></li>
+          <li><a onclick="navScrollTo('practice')">税务行政诉讼</a></li>
+          <li><a onclick="navScrollTo('practice')">虚开发票辩护</a></li>
+          <li><a onclick="navScrollTo('practice')">逃税罪辩护</a></li>
+          <li><a onclick="navScrollTo('practice')">常年法律顾问</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">快速导航</div>
+        <ul class="footer-links">
+          <li><a onclick="navScrollTo('cases')">成功案例</a></li>
+          <li><a onclick="navScrollTo('comics')">普法漫画</a></li>
+          <li><a onclick="navScrollTo('articles')">专业文章</a></li>
+          <li><a onclick="navScrollTo('laws')">法律法规</a></li>
+          <li><a onclick="navScrollTo('faq')">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">联系我们</div>
+        <ul class="footer-links">
+          <li><a>📞 13857739079</a></li>
+          <li><a>📱 13857739079（微信同号）</a></li>
+          <li><a>📧 （邮箱可后续填写）</a></li>
+          <li><a onclick="navScrollTo('contact')">在线咨询</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2024 周义军律师 · 浙江六和（温州）律师事务所 · 全国涉税争议解决专家 · 版权所有</div>
+      <div>浙ICP备XXXXXXXX号 · 浙公网安备XXXXXXXXXXXXXX号</div>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<div id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</div>
+
+<script>
+  // Smooth scroll to section
+  function navScrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 68;
+      const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }
+
+  // Mobile menu
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Back to top button
+  window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backTop');
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  });
+
+  // FAQ toggle
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    // Toggle current
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Law search
+  function searchLaw() {
+    const query = document.getElementById('lawSearch').value.trim();
+    if (!query) return;
+    const items = document.querySelectorAll('.law-item');
+    let found = 0;
+    items.forEach(item => {
+      if (item.textContent.includes(query)) {
+        item.style.background = 'rgba(201,168,76,0.12)';
+        item.style.color = 'var(--primary)';
+        item.style.fontWeight = 'bold';
+        found++;
+      } else {
+        item.style.background = '';
+        item.style.color = '';
+        item.style.fontWeight = '';
+      }
+    });
+    if (found === 0) {
+      alert('未找到包含"' + query + '"的法律法规，请尝试其他关键词。');
+    }
+  }
+
+  document.getElementById('lawSearch').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') searchLaw();
+  });
+
+  // Form submit
+  function submitForm(e) {
+    e.preventDefault();
+    const success = document.getElementById('formSuccess');
+    success.style.display = 'block';
+    e.target.reset();
+    setTimeout(() => { success.style.display = 'none'; }, 6000);
+  }
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+</body>
+</html>
