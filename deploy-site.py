@@ -244,6 +244,17 @@ def main():
                 shutil.copy2(src_path, dst_path)
                 print(f"  📎 复制图片: {img_rel}")
 
+    # --- 复制微信二维码到部署目录 ---
+    qr_src = os.path.join(os.path.dirname(SITE_TEMPLATE), "images", "wechat-qr.png")
+    qr_dst_dir = os.path.join(DEPLOY_DIR, "images")
+    qr_dst = os.path.join(qr_dst_dir, "wechat-qr.png")
+    if os.path.exists(qr_src):
+        os.makedirs(qr_dst_dir, exist_ok=True)
+        shutil.copy2(qr_src, qr_dst)
+        print(f"  📱 复制微信二维码: images/wechat-qr.png")
+    else:
+        print(f"  ⚠️ 微信二维码未找到，请将二维码图片放到 template/images/wechat-qr.png")
+
     # --- 漫画区域 ---
     cards_html = ""
     for c in comics:
@@ -257,6 +268,7 @@ def main():
 
     old_comics = html.find('<section id="comics">')
     old_comics_end = html.find('</section>', old_comics) + len('</section>')
+    total_pages = (len(comics) + 9) // 10 if comics else 1
     new_comics = f'''<section id="comics">
   <div class="container">
     <div class="section-header">
@@ -265,8 +277,12 @@ def main():
       <div class="section-divider"></div>
       <p class="section-desc">通过生动有趣的漫画形式，为您解读复杂的涉税法律问题，让法律知识触手可及</p>
     </div>
-    <div class="comics-grid">
+    <div class="comics-top-bar">
+      <div class="comics-count-info">共 <strong class="gold" id="comicsTotal">{len(comics)}</strong> 集 · 第 <strong id="comicsCurrentPage">1</strong>/<strong id="comicsTotalPages">{total_pages}</strong> 页</div>
+    </div>
+    <div class="comics-grid" id="comicsGrid">
 {cards_html}    </div>
+    <div class="comics-pagination" id="comicsPagination"></div>
   </div>
 </section>'''
     html = html[:old_comics] + new_comics + html[old_comics_end:]

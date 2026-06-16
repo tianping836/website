@@ -10,3 +10,4 @@ workspace/
 # 部署缓存
 .deploy-cache.json
 .deploy-cache/
+.claude/plans/myagents/

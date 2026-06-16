@@ -787,6 +787,102 @@ document.addEventListener('click', function(e) {
     justify-content: space-between;
   }
 
+  /* ===== COMICS PAGINATION ===== */
+  .comics-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .comics-count-info {
+    font-size: 14px;
+    color: var(--text-mid);
+    font-family: 'SimHei', '黑体', sans-serif;
+  }
+
+  .comics-count-info strong {
+    color: var(--primary);
+    font-size: 16px;
+  }
+
+  .comics-count-info .gold {
+    color: var(--gold);
+  }
+
+  .comics-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+
+  .comics-page-btn {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--primary);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'SimHei', '黑体', sans-serif;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+  }
+
+  .comics-page-btn:hover:not(.active):not(.disabled) {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .comics-page-btn.active {
+    background: var(--primary);
+    color: var(--gold-light);
+    border-color: var(--primary);
+    font-weight: bold;
+    pointer-events: none;
+  }
+
+  .comics-page-btn.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .comics-page-ellipsis {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 14px;
+    user-select: none;
+  }
+
+  @media (max-width: 768px) {
+    .comics-top-bar {
+      justify-content: center;
+      text-align: center;
+    }
+    .comics-page-btn {
+      min-width: 34px;
+      height: 34px;
+      font-size: 13px;
+      padding: 0 10px;
+    }
+  }
+
   /* ===== ARTICLES ===== */
   #articles { background: white; }
 
@@ -1468,16 +1564,21 @@ document.addEventListener('click', function(e) {
   }
 
   .map-placeholder {
-    height: 280px;
-    background: linear-gradient(135deg, #e8f0fe, #dce8ff);
+    min-height: 180px;
+    background: linear-gradient(135deg, #f0f4ff, #e8f0fe);
     border-radius: 8px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--border);
+    border: 2px dashed rgba(201,168,76,0.4);
     color: var(--text-mid);
-    gap: 12px;
+    transition: all 0.3s;
+  }
+
+  .map-placeholder:hover {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, #e8f0fe, #dce8ff);
+    box-shadow: 0 4px 16px rgba(13,35,64,0.10);
   }
 
   .map-placeholder .map-icon { font-size: 48px; opacity: 0.5; }
@@ -1711,6 +1812,120 @@ document.addEventListener('click', function(e) {
     font-family: 'SimHei', '黑体', sans-serif;
     display: none;
     margin-top: 8px;
+  }
+
+  /* ===== WECHAT QR ===== */
+  .qr-section {
+    text-align: center;
+  }
+
+  .qr-box-large {
+    width: 185px;
+    height: 185px;
+    margin: 0 auto 16px;
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(13,35,64,0.08);
+    position: relative;
+  }
+
+  .qr-box-large::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px dashed rgba(201,168,76,0.3);
+    border-radius: 8px;
+    pointer-events: none;
+  }
+
+  .qr-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+  }
+
+  .qr-fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px;
+  }
+
+  .qr-fallback-icon {
+    font-size: 48px;
+    opacity: 0.6;
+  }
+
+  .qr-fallback-text {
+    font-size: 14px;
+    color: var(--text-mid);
+    font-family: 'SimHei', '黑体', sans-serif;
+  }
+
+  .qr-fallback-id {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--primary);
+    font-family: 'SimHei', '黑体', sans-serif;
+    letter-spacing: 2px;
+  }
+
+  .qr-fallback-sub {
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  .qr-tip {
+    font-size: 15px;
+    color: var(--primary);
+    font-family: 'SimHei', '黑体', sans-serif;
+    font-weight: bold;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  .qr-detail {
+    display: grid;
+    gap: 10px;
+    max-width: 280px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .qr-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    padding: 8px 12px;
+    background: rgba(13,35,64,0.03);
+    border-radius: 6px;
+  }
+
+  .qr-detail-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .qr-detail-label {
+    color: var(--text-light);
+    font-family: 'SimHei', '黑体', sans-serif;
+    font-size: 12px;
+    min-width: 48px;
+  }
+
+  .qr-detail-value {
+    color: var(--text-dark);
+    font-weight: bold;
+    font-size: 14px;
   }
 </style>
 </head>
@@ -2018,7 +2233,10 @@ document.addEventListener('click', function(e) {
       <div class="section-divider"></div>
       <p class="section-desc">通过生动有趣的漫画形式，为您解读复杂的涉税法律问题，让法律知识触手可及</p>
     </div>
-    <div class="comics-grid">
+    <div class="comics-top-bar">
+      <div class="comics-count-info">共 <strong class="gold" id="comicsTotal">8</strong> 集 · 第 <strong id="comicsCurrentPage">1</strong>/<strong id="comicsTotalPages">1</strong> 页</div>
+    </div>
+    <div class="comics-grid" id="comicsGrid">
       <div class="comic-card">
         <div class="comic-thumb" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2)">
           <div class="comic-thumb-inner">
@@ -2116,6 +2334,7 @@ document.addEventListener('click', function(e) {
         </div>
       </div>
     </div>
+    <div class="comics-pagination" id="comicsPagination"></div>
   </div>
 </section>
 
@@ -2517,7 +2736,7 @@ document.addEventListener('click', function(e) {
     </div>
     <div class="contact-inner">
       <div class="contact-info">
-        <div class="contact-title">联系方式</div>
+        <div class="contact-title">律师信息</div>
         <div class="contact-items">
           <div class="contact-item">
             <div class="contact-icon">📍</div>
@@ -2527,90 +2746,51 @@ document.addEventListener('click', function(e) {
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
+            <div class="contact-icon">📍</div>
             <div class="contact-item-content">
               <div class="contact-item-label">办公地址</div>
-              <div class="contact-item-value">温州市鹿城区府东路476号宏国大厦11楼（可接受全国委托）</div>
+              <div class="contact-item-value">浙江省温州市鹿城区府东路476号宏国大厦11楼</div>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon">📞</div>
             <div class="contact-item-content">
               <div class="contact-item-label">咨询电话</div>
-              <div class="contact-item-value">13857739079<br><span style="font-size:13px;opacity:0.8;">微信号：13857739079（手机号同号）</span></div>
+              <div class="contact-item-value">13857739079</div>
             </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📧</div>
-            <div class="contact-item-content">
-              <div class="contact-item-label">电子邮箱</div>
-              <div class="contact-item-value">（邮箱可后续填写）</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">🕐</div>
-            <div class="contact-item-content">
-              <div class="contact-item-label">工作时间</div>
-              <div class="contact-item-value">周一至周五 09:00–18:00<br>紧急事务可电话联系</div>
-            </div>
-          </div>
-        </div>
-        <div class="contact-qr">
-          <div class="qr-item">
-            <div class="qr-box">💬</div>
-            <div class="qr-label">微信公众号</div>
-          </div>
-          <div class="qr-item">
-            <div class="qr-box">📱</div>
-            <div class="qr-label">微信扫码咨询</div>
           </div>
         </div>
       </div>
 
       <div class="contact-form-wrap">
-        <div class="form-title">在线咨询</div>
-        <form class="contact-form" onsubmit="submitForm(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">您的姓名<span class="required">*</span></label>
-              <input class="form-input" type="text" placeholder="请输入您的姓名" required>
+        <div class="form-title">微信咨询</div>
+        <div class="qr-section">
+          <div class="qr-box-large">
+            <img src="images/wechat-qr.png" alt="微信扫码咨询" class="qr-image" onerror="this.style.display='none';document.getElementById('qrFallback').style.display='flex'">
+            <div class="qr-fallback" id="qrFallback" style="display:none">
+              <div class="qr-fallback-icon">💬</div>
+              <div class="qr-fallback-text">微信扫一扫添加</div>
+              <div class="qr-fallback-id">13857739079</div>
+              <div class="qr-fallback-sub">微信号同手机号</div>
             </div>
-            <div class="form-group">
-              <label class="form-label">联系电话<span class="required">*</span></label>
-              <input class="form-input" type="tel" placeholder="请输入您的电话号码" required>
-            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label">案件类型</label>
-            <select class="form-select">
-              <option value="">请选择案件类型</option>
-              <option>税务稽查应对</option>
-              <option>税务行政复议/诉讼</option>
-              <option>虚开发票辩护</option>
-              <option>逃税罪辩护</option>
-              <option>骗税罪辩护</option>
-              <option>走私罪辩护</option>
-              <option>常年法律顾问</option>
-              <option>其他涉税问题</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">咨询内容<span class="required">*</span></label>
-            <textarea class="form-textarea" placeholder="请简要描述您的案件情况或咨询问题，我们将尽快与您联系..." required></textarea>
-          </div>
-          <div style="font-size:12px;color:var(--text-light);line-height:1.6;padding:10px 14px;background:rgba(13,35,64,0.04);border-radius:4px;border-left:3px solid var(--gold);">
-            🔒 您提交的信息受律师保密义务保护，我们将严格保密，不会泄露给任何第三方。
-          </div>
-          <button type="submit" class="form-submit">提交咨询 →</button>
-          <div class="form-success" id="formSuccess">✅ 您的咨询已成功提交！我们将在1个工作日内与您联系，感谢您的信任。</div>
-        </form>
+          <div class="qr-tip">📱 扫描二维码添加微信 · 备注「网站法律咨询」</div>
+        </div>
+        <div style="font-size:12px;color:var(--text-light);line-height:1.6;padding:10px 16px;background:rgba(13,35,64,0.04);border-radius:4px;border-left:3px solid var(--gold);margin-top:16px;text-align:center;white-space:nowrap;">
+          🔒 您的隐私受律师保密义务保护，咨询内容严格保密。
+        </div>
       </div>
     </div>
 
-    <div class="map-placeholder">
-      <div class="map-icon">🗺️</div>
-      <div class="map-text">浙江省温州市鹿城区 · 立足浙江，服务全国</div>
-      <div class="map-addr">（地图嵌入区域 · 具体地址请联系确认）</div>
+    <div class="map-placeholder" onclick="window.open('https://uri.amap.com/search?keyword=温州市鹿城区府东路476号宏国大厦','_blank')" style="cursor:pointer;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;padding:20px;">
+        <div style="font-size:64px;line-height:1;">📍</div>
+        <div style="text-align:left;">
+          <div style="font-size:16px;font-weight:bold;color:var(--primary);font-family:'SimHei','黑体',sans-serif;margin-bottom:8px;">浙江六和（温州）律师事务所</div>
+          <div style="font-size:14px;color:var(--text-mid);font-family:'SimHei','黑体',sans-serif;line-height:1.8;">浙江省温州市鹿城区府东路476号宏国大厦11楼</div>
+          <div style="font-size:13px;color:var(--gold);font-family:'SimHei','黑体',sans-serif;margin-top:10px;">🗺️ 点击此处打开地图导航 →</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2743,15 +2923,6 @@ document.addEventListener('click', function(e) {
     if (e.key === 'Enter') searchLaw();
   });
 
-  // Form submit
-  function submitForm(e) {
-    e.preventDefault();
-    const success = document.getElementById('formSuccess');
-    success.style.display = 'block';
-    e.target.reset();
-    setTimeout(() => { success.style.display = 'none'; }, 6000);
-  }
-
   // Navbar scroll effect
   window.addEventListener('scroll', function() {
     const nav = document.getElementById('navbar');
@@ -2761,6 +2932,108 @@ document.addEventListener('click', function(e) {
       nav.style.boxShadow = 'none';
     }
   });
+
+  // ===== 漫画分页 =====
+  var COMICS_PER_PAGE = 10;
+  var comicsCurrentPage = 1;
+
+  function initComicsPagination() {
+    var grid = document.getElementById('comicsGrid');
+    if (!grid) return;
+    var cards = grid.querySelectorAll('.comic-card');
+    var total = cards.length;
+    if (total === 0) return;
+
+    var totalPages = Math.ceil(total / COMICS_PER_PAGE);
+    document.getElementById('comicsTotal').textContent = total;
+    document.getElementById('comicsTotalPages').textContent = totalPages;
+
+    if (totalPages <= 1) {
+      document.getElementById('comicsPagination').style.display = 'none';
+      return;
+    }
+
+    renderComicsPage(1);
+  }
+
+  function renderComicsPage(page) {
+    var grid = document.getElementById('comicsGrid');
+    if (!grid) return;
+    var cards = grid.querySelectorAll('.comic-card');
+    var total = cards.length;
+    var totalPages = Math.ceil(total / COMICS_PER_PAGE);
+
+    comicsCurrentPage = page;
+    var start = (page - 1) * COMICS_PER_PAGE;
+    var end = start + COMICS_PER_PAGE;
+
+    cards.forEach(function(card, i) {
+      card.style.display = (i >= start && i < end) ? '' : 'none';
+    });
+
+    document.getElementById('comicsCurrentPage').textContent = page;
+    buildPaginationButtons(totalPages, page);
+
+    // 滚动到漫画区域顶部
+    var comicsSection = document.getElementById('comics');
+    if (comicsSection) {
+      var top = comicsSection.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  }
+
+  function buildPaginationButtons(totalPages, currentPage) {
+    var container = document.getElementById('comicsPagination');
+    if (!container) return;
+    container.style.display = 'flex';
+
+    var html = '';
+
+    // 上一页
+    html += '<button class="comics-page-btn' + (currentPage === 1 ? ' disabled' : '') + '" onclick="goToComicsPage(' + (currentPage - 1) + ')"' + (currentPage === 1 ? ' disabled' : '') + '>← 上一页</button>';
+
+    // 页码按钮
+    var pagesToShow = [];
+    if (totalPages <= 7) {
+      for (var i = 1; i <= totalPages; i++) pagesToShow.push(i);
+    } else {
+      pagesToShow.push(1);
+      if (currentPage > 3) pagesToShow.push('...');
+      var startPage = Math.max(2, currentPage - 1);
+      var endPage = Math.min(totalPages - 1, currentPage + 1);
+      for (var i = startPage; i <= endPage; i++) pagesToShow.push(i);
+      if (currentPage < totalPages - 2) pagesToShow.push('...');
+      pagesToShow.push(totalPages);
+    }
+
+    pagesToShow.forEach(function(p) {
+      if (p === '...') {
+        html += '<span class="comics-page-ellipsis">…</span>';
+      } else {
+        html += '<button class="comics-page-btn' + (p === currentPage ? ' active' : '') + '" onclick="goToComicsPage(' + p + ')">' + p + '</button>';
+      }
+    });
+
+    // 下一页
+    html += '<button class="comics-page-btn' + (currentPage === totalPages ? ' disabled' : '') + '" onclick="goToComicsPage(' + (currentPage + 1) + ')"' + (currentPage === totalPages ? ' disabled' : '') + '>下一页 →</button>';
+
+    container.innerHTML = html;
+  }
+
+  function goToComicsPage(page) {
+    var totalPages = parseInt(document.getElementById('comicsTotalPages').textContent) || 1;
+    if (page < 1 || page > totalPages) return;
+    renderComicsPage(page);
+  }
+
+  // 页面加载完成后初始化分页
+  document.addEventListener('DOMContentLoaded', function() {
+    initComicsPagination();
+  });
+  // 如果 DOM 已加载则立即执行（兜底）
+  if (document.readyState !== 'loading') {
+    initComicsPagination();
+  }
 </script>
 </body>
 </html>
