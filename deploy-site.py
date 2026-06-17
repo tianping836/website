@@ -28,6 +28,7 @@ CACHE_IMG_DIR = os.path.expanduser("~/.myagents/projects/website/.deploy-cache")
 DEPLOY_DIR = "/tmp/zhouyijun-deploy"
 ACCT_ID = "0dcf6b6e6264958abe0e8d2c185db8d5"
 PROJ_NAME = "zhouyijun-lawyer"
+DOMAINS = ["zhouyijun.cn", "zhouyijunlawyer.cn", "zhouyijunlawyer.com"]
 
 # ====== Markdown 转换 ======
 def md_to_html(md_text):
@@ -677,6 +678,12 @@ def main():
     else:
         print(f"  ⚠️ 微信二维码未找到，请将二维码图片放到 template/images/wechat-qr.png")
 
+    # --- 复制执业机构图标 ---
+    icon_src = os.path.join(os.path.dirname(SITE_TEMPLATE), "images", "jigou-icon.png")
+    icon_dst = os.path.join(qr_dst_dir, "jigou-icon.png")
+    if os.path.exists(icon_src):
+        shutil.copy2(icon_src, icon_dst)
+
     # --- 漫画区域 ---
     cards_html = ""
     for c in comics:
@@ -704,7 +711,50 @@ def main():
 {cards_html}    </div>
     <div class="comics-pagination" id="comicsPagination"></div>
   </div>
-</section>'''
+</section>
+<script>
+(function(){{
+  var COMICS_PER_PAGE = 10;
+  var grid = document.getElementById('comicsGrid');
+  if (!grid) return;
+  var cards = grid.querySelectorAll('.comic-card');
+  if (cards.length <= COMICS_PER_PAGE) return;
+  cards.forEach(function(card, i) {{
+    if (i >= COMICS_PER_PAGE) card.classList.add('comic-hidden');
+  }});
+  var totalPages = Math.ceil(cards.length / COMICS_PER_PAGE);
+  var pgEl = document.getElementById('comicsPagination');
+  if (pgEl) pgEl.style.display = 'flex';
+  function buildBtns() {{
+    var pgEl = document.getElementById('comicsPagination');
+    if (!pgEl) return;
+    var html = '';
+    var cp = window._comicsPage || 1;
+    html += '<button class="comics-page-btn' + (cp===1?' disabled':'') + '" onclick="window._goPage(' + (cp-1) + ')">← 上一页</button>';
+    for (var p=1; p<=totalPages; p++) {{
+      if (totalPages<=7 || p===1 || p===totalPages || (p>=cp-1 && p<=cp+1)) {{
+        html += '<button class="comics-page-btn' + (p===cp?' active':'') + '" onclick="window._goPage(' + p + ')">' + p + '</button>';
+      }} else if (p===cp-2 || p===cp+2) {{
+        html += '<span class="comics-page-ellipsis">…</span>';
+      }}
+    }}
+    html += '<button class="comics-page-btn' + (cp===totalPages?' disabled':'') + '" onclick="window._goPage(' + (cp+1) + ')">下一页 →</button>';
+    pgEl.innerHTML = html;
+  }}
+  window._goPage = function(page) {{
+    if (page<1 || page>totalPages) return;
+    window._comicsPage = page;
+    var cards = document.querySelectorAll('#comicsGrid .comic-card');
+    var start = (page-1)*COMICS_PER_PAGE;
+    var end = start+COMICS_PER_PAGE;
+    cards.forEach(function(card, i) {{ card.classList.toggle('comic-hidden', i<start || i>=end); }});
+    document.getElementById('comicsCurrentPage').textContent = page;
+    buildBtns();
+  }};
+  window._comicsPage = 1;
+  buildBtns();
+}})();
+</script>'''
     html = html[:old_comics] + new_comics + html[old_comics_end:]
 
     # --- 文章区域 ---
@@ -866,11 +916,13 @@ Sitemap: https://zhouyijunlawyer.com/sitemap.xml
         ["npx", "wrangler", "pages", "deploy", ".", "--project-name", PROJ_NAME, "--branch", "main"],
         cwd=DEPLOY_DIR,
         env={**os.environ, "CLOUDFLARE_API_TOKEN": token, "CLOUDFLARE_ACCOUNT_ID": ACCT_ID},
-        capture_output=True, text=True, timeout=120
+        capture_output=True, text=True, timeout=300
     )
 
     if result.returncode == 0:
-        print("✅ 部署成功！https://zhouyijunlawyer.com")
+        print("✅ 部署成功！")
+        for d in DOMAINS:
+            print(f"   https://{d}")
     else:
         print(f"❌ 部署失败:\n{result.stderr}")
 

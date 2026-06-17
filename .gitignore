@@ -11,3 +11,4 @@ workspace/
 .deploy-cache.json
 .deploy-cache/
 .claude/plans/myagents/
+myagents_files/
