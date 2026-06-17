@@ -91,6 +91,426 @@ def _compress_image(src, dst):
     return os.path.exists(dst)
 
 
+# ====== 独立页面模板 ======
+
+ARTICLE_PAGE_CSS = '''    :root {
+      --primary: #0d2340; --primary-light: #1a3a5c; --primary-dark: #081828;
+      --gold: #c9a84c; --gold-light: #e8c97a; --text-dark: #1a1a2e;
+      --text-mid: #4a5568; --text-light: #718096; --bg-light: #f7f8fc;
+      --bg-white: #ffffff; --border: #e2e8f0;
+      --shadow: 0 4px 20px rgba(13,35,64,0.10);
+      --shadow-lg: 0 8px 40px rgba(13,35,64,0.16);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'SimSun', 'STSong', '宋体', 'Microsoft YaHei', '微软雅黑', serif;
+      color: var(--text-dark); background: var(--bg-white); line-height: 1.9;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 3px; }
+
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(8,24,40,0.97); backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.3);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 68px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon {
+      width: 42px; height: 42px; background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: var(--primary-dark); font-weight: bold; font-family: 'SimSun', serif;
+    }
+    .logo-name {
+      font-size: 18px; font-weight: bold; font-family: 'SimHei', '黑体', 'Microsoft YaHei', sans-serif;
+      letter-spacing: 2px; color: white;
+    }
+    .logo-sub { font-size: 11px; color: var(--gold-light); letter-spacing: 3px; }
+    .nav-home {
+      color: var(--gold-light); text-decoration: none; font-size: 13px;
+      font-family: 'SimHei', '黑体', sans-serif; padding: 6px 14px; border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 4px; transition: all 0.2s;
+    }
+    .nav-home:hover { background: rgba(201,168,76,0.12); }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { padding: 100px 0 20px; font-size: 13px; color: var(--text-light); }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 8px; color: var(--border); }
+
+    .article-header { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+    .article-header h1 {
+      font-size: 28px; font-family: 'SimHei', '黑体', 'Microsoft YaHei', sans-serif;
+      color: var(--primary); line-height: 1.4; margin-bottom: 16px; letter-spacing: 1px;
+    }
+    .article-meta { font-size: 13px; color: var(--text-light); display: flex; gap: 20px; flex-wrap: wrap; }
+    .article-meta .tag {
+      background: rgba(13,35,64,0.06); color: var(--primary); padding: 2px 10px;
+      border-radius: 3px; font-family: 'SimHei', '黑体', sans-serif; font-size: 12px;
+    }
+
+    .article-body { font-size: 15px; color: var(--text-mid); line-height: 2; }
+    .article-body h2 {
+      color: var(--primary); font-family: 'SimHei', '黑体', sans-serif; font-size: 22px;
+      margin: 36px 0 16px; padding-left: 14px; border-left: 4px solid var(--gold);
+    }
+    .article-body h3 {
+      color: var(--primary); font-family: 'SimHei', '黑体', sans-serif; font-size: 17px;
+      margin: 28px 0 12px;
+    }
+    .article-body p { margin: 12px 0; }
+    .article-body ul, .article-body ol { padding-left: 24px; margin: 12px 0; }
+    .article-body li { margin: 6px 0; }
+    .article-body img {
+      max-width: 100%; border-radius: 8px; margin: 20px 0; box-shadow: var(--shadow);
+    }
+    .article-body strong { color: var(--primary-dark); }
+    .article-body blockquote {
+      border-left: 3px solid var(--gold); padding: 12px 20px; margin: 20px 0;
+      background: rgba(201,168,76,0.06); border-radius: 0 6px 6px 0; color: var(--text-mid); font-style: italic;
+    }
+
+    .article-footer {
+      margin-top: 60px; padding-top: 28px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .back-link {
+      color: var(--gold); text-decoration: none; font-size: 14px; font-family: 'SimHei', '黑体', sans-serif;
+      display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s;
+    }
+    .back-link:hover { gap: 10px; }
+    .share-hint { font-size: 13px; color: var(--text-light); }
+
+    footer {
+      background: var(--primary-dark); color: rgba(255,255,255,0.5); padding: 32px 0; margin-top: 80px;
+      text-align: center; font-size: 12px; line-height: 1.8;
+    }
+    footer .gold { color: var(--gold-light); }
+    .footer-disclaimer {
+      max-width: 860px; margin: 0 auto 16px; padding: 10px 16px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px; font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.7;
+    }
+
+    #backTop {
+      position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px;
+      background: var(--primary); border: 2px solid var(--gold); color: var(--gold-light);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 16px; transition: all 0.3s; opacity: 0; transform: translateY(20px);
+      z-index: 999; box-shadow: 0 4px 16px rgba(13,35,64,0.3);
+    }
+    #backTop.visible { opacity: 1; transform: translateY(0); }
+    #backTop:hover { background: var(--gold); color: var(--primary-dark); transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .article-header h1 { font-size: 22px; }
+      .article-body { font-size: 14px; }
+      .article-body h2 { font-size: 18px; }
+      .article-body h3 { font-size: 15px; }
+    }'''
+
+
+def generate_article_page(article, canonical_url):
+    """生成文章独立页面 HTML"""
+    title = article['title']
+    date = article['date']
+    body_html = article['body_html']
+    excerpt = article['excerpt']
+    safe_id = article['safe_id']
+
+    # 提取纯文本摘要(去除HTML标签)
+    import re as _re
+    plain_excerpt = _re.sub(r'<[^>]+>', '', excerpt)[:160]
+    if len(excerpt) > 160:
+        plain_excerpt += '...'
+
+    page_title = f"{title} - 周义军律师 | 温州税务律师 · 浙江涉税争议解决专家"
+    page_desc = plain_excerpt or f"周义军律师专业文章：{title}。温州税务律师、浙江涉税争议解决专家，深耕涉税法律领域15年以上，全国接案。"
+
+    # BreadcrumbList JSON-LD
+    breadcrumb_ld = f'''<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://zhouyijunlawyer.com/"}},
+    {{"@type": "ListItem", "position": 2, "name": "专业文章", "item": "https://zhouyijunlawyer.com/#articles"}},
+    {{"@type": "ListItem", "position": 3, "name": "{title}"}}
+  ]
+}}
+</script>'''
+
+    return f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{page_title}</title>
+<meta name="description" content="{page_desc}">
+<meta name="keywords" content="周义军,温州税务律师,浙江税务律师,涉税律师,{title}">
+<meta name="author" content="周义军律师">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{canonical_url}">
+<meta property="og:title" content="{page_title}">
+<meta property="og:description" content="{page_desc}">
+<meta property="og:url" content="{canonical_url}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="周义军律师">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="{date}">
+<meta property="article:author" content="周义军律师">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{page_title}">
+<meta name="twitter:description" content="{page_desc}">
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{title}",
+  "description": "{page_desc}",
+  "author": {{
+    "@type": "Person",
+    "name": "周义军",
+    "jobTitle": "专职律师",
+    "description": "温州税务律师、浙江省涉税争议解决专家，律师+税务师双证，15年以上涉税法律经验",
+    "affiliation": {{
+      "@type": "Organization",
+      "name": "浙江六和（温州）律师事务所",
+      "address": {{"@type": "PostalAddress", "addressLocality": "温州市", "addressRegion": "浙江省"}}
+    }}
+  }},
+  "datePublished": "{date}",
+  "publisher": {{
+    "@type": "LegalService",
+    "name": "周义军律师 - 温州税务律师",
+    "url": "https://zhouyijunlawyer.com",
+    "address": {{"@type": "PostalAddress", "addressLocality": "温州市", "addressRegion": "浙江省", "addressCountry": "CN"}}
+  }},
+  "mainEntityOfPage": {{"@type": "WebPage", "@id": "{canonical_url}"}},
+  "about": [
+    {{"@type": "Thing", "name": "税务法律"}},
+    {{"@type": "Thing", "name": "涉税争议解决"}}
+  ]
+}}
+</script>
+{breadcrumb_ld}
+<style>
+{ARTICLE_PAGE_CSS}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <div class="logo-icon">律</div>
+      <div class="logo-text">
+        <div class="logo-name">周义军律师</div>
+        <div class="logo-sub">全国涉税争议解决专家</div>
+      </div>
+    </a>
+    <a class="nav-home" href="/">← 返回首页</a>
+  </div>
+</nav>
+
+<div class="container">
+  <nav class="breadcrumb" aria-label="面包屑导航">
+    <a href="/">首页</a><span>›</span><a href="/#articles">专业文章</a><span>›</span>{title}
+  </nav>
+
+  <article>
+    <header class="article-header">
+      <h1>{title}</h1>
+      <div class="article-meta">
+        <span>📅 {date}</span>
+        <span class="tag">专业文章</span>
+        <span>✍️ 周义军律师</span>
+      </div>
+    </header>
+
+    <div class="article-body">
+{body_html}
+    </div>
+  </article>
+
+  <div class="article-footer">
+    <a class="back-link" href="/#articles">← 返回专业文章列表</a>
+    <div class="share-hint">📱 觉得有用？分享给需要的人</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-disclaimer">
+    ⚠️ 执业声明：本文仅供法律知识参考，不构成具体法律意见。如需法律帮助，请直接联系律师进行专业咨询。
+  </div>
+  <div style="max-width:860px;margin:0 auto;padding:0 24px;">
+    © 2024 周义军律师 · 浙江六和（温州）律师事务所 · <span class="gold">全国涉税争议解决专家</span><br>
+    📞 13857739079（微信同号）· 📍 温州市鹿城区府东路476号宏国大厦11楼
+  </div>
+</footer>
+
+<div id="backTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})">▲</div>
+
+<script>
+window.addEventListener('scroll',function(){{var b=document.getElementById('backTop');if(window.scrollY>400)b.classList.add('visible');else b.classList.remove('visible')}});
+</script>
+</body>
+</html>'''
+
+
+def generate_comic_page(comic, canonical_url):
+    """生成漫画独立页面 HTML（SEO 友好，图片带 alt）"""
+    title = comic['title']
+    images = comic['images']
+
+    page_title = f"{title} - 普法漫画 | 周义军律师 · 温州税务律师"
+    page_desc = f"周义军律师普法漫画：{title}。温州税务律师、浙江涉税争议解决专家，通过生动有趣的漫画形式，为您解读涉税法律问题，让法律知识触手可及。"
+
+    # 生成图片列表（带 alt 和 loading=lazy）
+    img_tags = ''
+    for i, img in enumerate(images):
+        alt_text = f"{title} - 第{i+1}页"
+        img_tags += f'        <img src="/{img["file"]}" alt="{alt_text}" loading="lazy" style="width:100%;border-radius:8px;box-shadow:var(--shadow);margin-bottom:16px">\n'
+
+    breadcrumb_ld = f'''<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://zhouyijunlawyer.com/"}},
+    {{"@type": "ListItem", "position": 2, "name": "普法漫画", "item": "https://zhouyijunlawyer.com/#comics"}},
+    {{"@type": "ListItem", "position": 3, "name": "{title}"}}
+  ]
+}}
+</script>'''
+
+    return f'''<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{page_title}</title>
+<meta name="description" content="{page_desc}">
+<meta name="keywords" content="周义军,温州税务律师,普法漫画,税务律师,{title}">
+<meta name="author" content="周义军律师">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{canonical_url}">
+<meta property="og:title" content="{page_title}">
+<meta property="og:description" content="{page_desc}">
+<meta property="og:url" content="{canonical_url}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="周义军律师">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhouyijunlawyer.com/{images[0]['file']}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{page_title}">
+<meta name="twitter:description" content="{page_desc}">
+<meta name="twitter:image" content="https://zhouyijunlawyer.com/{images[0]['file']}">
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{title}",
+  "description": "{page_desc}",
+  "author": {{
+    "@type": "Person",
+    "name": "周义军",
+    "jobTitle": "专职律师",
+    "description": "温州税务律师、浙江省涉税争议解决专家，律师+税务师双证",
+    "affiliation": {{
+      "@type": "Organization",
+      "name": "浙江六和（温州）律师事务所",
+      "address": {{"@type": "PostalAddress", "addressLocality": "温州市", "addressRegion": "浙江省"}}
+    }}
+  }},
+  "publisher": {{
+    "@type": "LegalService",
+    "name": "周义军律师 - 温州税务律师",
+    "url": "https://zhouyijunlawyer.com",
+    "address": {{"@type": "PostalAddress", "addressLocality": "温州市", "addressRegion": "浙江省", "addressCountry": "CN"}}
+  }},
+  "mainEntityOfPage": {{"@type": "WebPage", "@id": "{canonical_url}"}},
+  "thumbnailUrl": "https://zhouyijunlawyer.com/{images[0]['file']}"
+}}
+</script>
+{breadcrumb_ld}
+<style>
+{ARTICLE_PAGE_CSS}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <div class="logo-icon">律</div>
+      <div class="logo-text">
+        <div class="logo-name">周义军律师</div>
+        <div class="logo-sub">全国涉税争议解决专家</div>
+      </div>
+    </a>
+    <a class="nav-home" href="/">← 返回首页</a>
+  </div>
+</nav>
+
+<div class="container">
+  <nav class="breadcrumb" aria-label="面包屑导航">
+    <a href="/">首页</a><span>›</span><a href="/#comics">普法漫画</a><span>›</span>{title}
+  </nav>
+
+  <article>
+    <header class="article-header">
+      <h1>{title}</h1>
+      <div class="article-meta">
+        <span>🎨 普法漫画</span>
+        <span>📄 {len(images)} 页</span>
+        <span>✍️ 周义军律师</span>
+      </div>
+    </header>
+
+    <div class="article-body" style="max-width:700px;margin:0 auto;">
+{img_tags}    </div>
+  </article>
+
+  <div class="article-footer">
+    <a class="back-link" href="/#comics">← 返回普法漫画列表</a>
+    <div class="share-hint">📱 觉得有用？分享给需要的人</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-disclaimer">
+    ⚠️ 执业声明：本漫画仅供法律知识普及参考，不构成具体法律意见。如需法律帮助，请直接联系律师进行专业咨询。
+  </div>
+  <div style="max-width:860px;margin:0 auto;padding:0 24px;">
+    © 2024 周义军律师 · 浙江六和（温州）律师事务所 · <span class="gold">全国涉税争议解决专家</span><br>
+    📞 13857739079（微信同号）· 📍 温州市鹿城区府东路476号宏国大厦11楼
+  </div>
+</footer>
+
+<div id="backTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})">▲</div>
+
+<script>
+window.addEventListener('scroll',function(){{var b=document.getElementById('backTop');if(window.scrollY>400)b.classList.add('visible');else b.classList.remove('visible')}});
+</script>
+</body>
+</html>'''
+
+
+def _make_slug(text):
+    """从中文标题生成URL安全的slug"""
+    import re as _re
+    # 保留中文、字母、数字，其他替换为连字符
+    slug = _re.sub(r'[^\w一-鿿]+', '-', text).strip('-')
+    return slug[:60] or 'article'
+
+
 def main():
     # ====== 初始化 ======
     if os.path.exists(DEPLOY_DIR):
@@ -147,6 +567,7 @@ def main():
                                            "size_kb": round(os.path.getsize(deploy_img)/1024)})
                 if len(compressed) != len(imgs):
                     # 缓存不完整，回退压缩
+                    compressed = []
                     for i, img in enumerate(imgs):
                         src = os.path.join(dpath, img)
                         dst = os.path.join(deploy_comic_dir, f"{i+1}.jpg")
@@ -178,7 +599,7 @@ def main():
                 print(f"  {tag} {title[:45]}")
 
             total_kb = sum(x['size_kb'] for x in compressed)
-            comics.append({"title": title, "images": compressed, "total_kb": total_kb})
+            comics.append({"title": title, "images": compressed, "total_kb": total_kb, "folder_hash": folder_hash, "slug": _make_slug(title)})
             new_cache[folder_hash] = content_hash
 
         if unchanged > 0:
@@ -219,10 +640,11 @@ def main():
 
             body_html = md_to_html(content)
             safe_id = hashlib.md5(title.encode()).hexdigest()[:8]
+            slug = _make_slug(title)
 
             articles.append({
                 'title': title, 'date': formatted_date, 'excerpt': first_para,
-                'body_html': body_html, 'safe_id': safe_id
+                'body_html': body_html, 'safe_id': safe_id, 'slug': slug
             })
             print(f"  [{formatted_date}] {title[:45]}")
 
@@ -259,12 +681,10 @@ def main():
     cards_html = ""
     for c in comics:
         first_img = c['images'][0]['file']
-        imgs_json = json.dumps(c['images'], ensure_ascii=False).replace('"', '&quot;')
-        title_escaped = c['title'].replace("'", "\\'").replace('"', '\\"')
-        cards_html += f'      <div class="comic-card" onclick="openComic(\'{title_escaped}\', {imgs_json})">\n'
-        cards_html += f'        <div class="comic-thumb" style="background-image:url(\'{first_img}\');background-size:cover;background-position:center"></div>\n'
+        cards_html += f'      <a class="comic-card" href="/comics/{c["folder_hash"]}/" style="text-decoration:none;color:inherit">\n'
+        cards_html += f'        <div class="comic-thumb" style="background-image:url(\'/{first_img}\');background-size:cover;background-position:center"></div>\n'
         cards_html += f'        <div class="comic-info">\n          <div class="comic-title">{c["title"]}</div>\n'
-        cards_html += f'          <div class="comic-meta"><span>普法漫画</span><span>{len(c["images"])}页</span></div>\n        </div>\n      </div>\n'
+        cards_html += f'          <div class="comic-meta"><span>普法漫画</span><span>{len(c["images"])}页</span></div>\n        </div>\n      </a>\n'
 
     old_comics = html.find('<section id="comics">')
     old_comics_end = html.find('</section>', old_comics) + len('</section>')
@@ -290,9 +710,7 @@ def main():
     # --- 文章区域 ---
     article_cards = ""
     for a in articles:
-        body_html = a['body_html'].replace('&', '&amp;').replace('"', '&quot;').replace("'", '&#39;').replace('\n', '')
-        title_escaped = a['title'].replace("'", "\\'").replace('"', '\\"')
-        article_cards += f'''      <div class="article-card" onclick="openArticle('{title_escaped}', '{body_html}')">
+        article_cards += f'''      <a class="article-card" href="/articles/{a['slug']}/" style="text-decoration:none;color:inherit">
         <div class="article-date">
           <div class="article-day">{a['date'][8:10] if len(a['date'])==10 else ''}</div>
           <div class="article-month">{a['date'][:7] if a['date'] else ''}</div>
@@ -303,7 +721,7 @@ def main():
           <div class="article-excerpt">{a['excerpt']}</div>
           <div class="article-read">阅读全文 →</div>
         </div>
-      </div>
+      </a>
 '''
 
     old_articles = html.find('<section id="articles">')
@@ -322,30 +740,119 @@ def main():
 </section>'''
     html = html[:old_articles] + new_articles + html[old_articles_end:]
 
-    # --- 弹窗组件 ---
-    modal = '''
-<div id="comicModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:10000;overflow-y:auto">
-  <div style="position:fixed;top:16px;right:24px;z-index:10001">
-    <button onclick="closeModal()" style="background:rgba(255,255,255,0.2);color:white;border:none;padding:12px 20px;border-radius:6px;cursor:pointer;font-size:16px;font-family:SimHei,sans-serif">✕ 关闭</button>
-  </div>
-  <div id="comicModalContent" style="max-width:1420px;margin:40px auto;padding:20px"></div>
-</div>
-<div id="articleModal" style="display:none;position:fixed;inset:0;background:white;z-index:10000;overflow-y:auto">
-  <div style="position:fixed;top:16px;right:24px;z-index:10001">
-    <button onclick="closeModal()" style="background:rgba(13,35,64,0.9);color:white;border:none;padding:12px 20px;border-radius:6px;cursor:pointer;font-size:16px;font-family:SimHei,sans-serif">✕ 关闭</button>
-  </div>
-  <div id="articleModalContent" style="max-width:800px;margin:60px auto;padding:40px 24px"></div>
-</div>
-<script>
-function openComic(title,images){var cols=window.innerWidth<640?1:window.innerWidth<960?2:3;var h='<h2 style="color:#c9a84c;text-align:center;margin-bottom:30px;font-family:SimHei,sans-serif">'+title+"</h2><div style='display:grid;grid-template-columns:repeat("+cols+",1fr);gap:16px'>";images.forEach(function(i){h+='<img src="'+i.file+'" style="width:100%;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.5)" loading="lazy">'});h+="</div>";document.getElementById("comicModalContent").innerHTML=h;document.getElementById("comicModal").style.display="block";document.getElementById("articleModal").style.display="none";document.body.style.overflow="hidden"}
-function openArticle(title,body){document.getElementById("articleModalContent").innerHTML='<h1 style="color:#0d2340;font-family:SimHei,sans-serif;font-size:24px;margin-bottom:8px">'+title+'</h1><div style="width:60px;height:3px;background:linear-gradient(90deg,#c9a84c,#e8c97a);margin-bottom:30px;border-radius:2px"></div>'+body;document.getElementById("articleModal").style.display="block";document.getElementById("comicModal").style.display="none";document.body.style.overflow="hidden"}
-function closeModal(){document.getElementById("comicModal").style.display="none";document.getElementById("articleModal").style.display="none";document.body.style.overflow=""}
-</script>
-'''
-    html = html.replace('</body>', modal + '\n</body>')
-
     with open(f"{DEPLOY_DIR}/index.html", 'w') as f:
         f.write(html)
+
+    # =========================================
+    # 第三点五部分：生成独立页面 + SEO 文件
+    # =========================================
+
+    # --- 文章独立页面 ---
+    articles_dir = os.path.join(DEPLOY_DIR, "articles")
+    os.makedirs(articles_dir, exist_ok=True)
+    for a in articles:
+        page_dir = os.path.join(articles_dir, a['slug'])
+        os.makedirs(page_dir, exist_ok=True)
+        page_url = f"https://zhouyijunlawyer.com/articles/{a['slug']}/"
+        page_html = generate_article_page(a, page_url)
+        with open(os.path.join(page_dir, "index.html"), 'w') as f:
+            f.write(page_html)
+        print(f"  📄 文章页: /articles/{a['slug']}/")
+
+    # --- 漫画独立页面 ---
+    comics_pages_dir = os.path.join(DEPLOY_DIR, "comics")
+    os.makedirs(comics_pages_dir, exist_ok=True)
+    for c in comics:
+        page_dir = os.path.join(comics_pages_dir, c['folder_hash'])
+        os.makedirs(page_dir, exist_ok=True)
+        page_url = f"https://zhouyijunlawyer.com/comics/{c['folder_hash']}/"
+        page_html = generate_comic_page(c, page_url)
+        with open(os.path.join(page_dir, "index.html"), 'w') as f:
+            f.write(page_html)
+        print(f"  🎨 漫画页: /comics/{c['folder_hash']}/")
+
+    # --- robots.txt ---
+    robots_txt = f"""User-agent: *
+Allow: /
+Disallow: /images/
+
+Sitemap: https://zhouyijunlawyer.com/sitemap.xml
+"""
+    with open(os.path.join(DEPLOY_DIR, "robots.txt"), 'w') as f:
+        f.write(robots_txt)
+    print("  🤖 robots.txt 已生成")
+
+    # --- sitemap.xml ---
+    now_iso = time.strftime("%Y-%m-%d")
+    sitemap_urls = []
+    # 首页
+    sitemap_urls.append(f'''  <url>
+    <loc>https://zhouyijunlawyer.com/</loc>
+    <lastmod>{now_iso}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>''')
+    # 文章页
+    for a in articles:
+        sitemap_urls.append(f'''  <url>
+    <loc>https://zhouyijunlawyer.com/articles/{a['slug']}/</loc>
+    <lastmod>{a['date']}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>''')
+    # 漫画页
+    for c in comics:
+        sitemap_urls.append(f'''  <url>
+    <loc>https://zhouyijunlawyer.com/comics/{c['folder_hash']}/</loc>
+    <lastmod>{now_iso}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>''')
+
+    sitemap_xml = f'''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{chr(10).join(sitemap_urls)}
+</urlset>'''
+    with open(os.path.join(DEPLOY_DIR, "sitemap.xml"), 'w') as f:
+        f.write(sitemap_xml)
+    print(f"  🗺 sitemap.xml 已生成 ({len(sitemap_urls)} 个URL)")
+
+    # --- RSS Feed ---
+    rss_items = []
+    for a in articles:
+        rss_items.append(f'''    <item>
+      <title><![CDATA[{a['title']}]]></title>
+      <link>https://zhouyijunlawyer.com/articles/{a['slug']}/</link>
+      <description><![CDATA[{a['excerpt']}]]></description>
+      <author>周义军律师</author>
+      <pubDate>{a['date']}</pubDate>
+      <guid isPermaLink="true">https://zhouyijunlawyer.com/articles/{a['slug']}/</guid>
+    </item>''')
+    for c in comics:
+        rss_items.append(f'''    <item>
+      <title><![CDATA[[普法漫画] {c['title']}]]></title>
+      <link>https://zhouyijunlawyer.com/comics/{c['folder_hash']}/</link>
+      <description><![CDATA[周义军律师普法漫画：{c['title']}。共{len(c['images'])}页，通过漫画形式解读涉税法律知识。]]></description>
+      <author>周义军律师</author>
+      <pubDate>{now_iso}</pubDate>
+      <guid isPermaLink="true">https://zhouyijunlawyer.com/comics/{c['folder_hash']}/</guid>
+    </item>''')
+
+    rss_xml = f'''<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>周义军律师 - 温州税务律师 · 浙江涉税争议解决专家</title>
+  <link>https://zhouyijunlawyer.com</link>
+  <description>温州税务律师周义军，浙江省涉税争议解决专家，专注税务稽查应对、税务行政诉讼、涉税刑事辩护。律师+税务师双证，15年以上经验。</description>
+  <language>zh-CN</language>
+  <lastBuildDate>{now_iso}</lastBuildDate>
+  <atom:link href="https://zhouyijunlawyer.com/rss.xml" rel="self" type="application/rss+xml"/>
+{chr(10).join(rss_items)}
+</channel>
+</rss>'''
+    with open(os.path.join(DEPLOY_DIR, "rss.xml"), 'w') as f:
+        f.write(rss_xml)
+    print(f"  📡 rss.xml 已生成 ({len(rss_items)} 条)")
 
     # =========================================
     # 第四部分：部署
