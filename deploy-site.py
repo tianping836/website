@@ -230,7 +230,7 @@ def generate_article_page(article, canonical_url):
     if len(excerpt) > 160:
         plain_excerpt += '...'
 
-    page_title = f"{title} - 周义军律师 | 温州税务律师 · 浙江涉税争议解决专家"
+    page_title = f"{title} - 周义军律师 | 温州税务律师 · 浙江涉税争议解决专家 · 全国接案"
     page_desc = plain_excerpt or f"周义军律师专业文章：{title}。温州税务律师、浙江涉税争议解决专家，深耕涉税法律领域15年以上，全国接案。"
 
     # BreadcrumbList JSON-LD
@@ -253,7 +253,7 @@ def generate_article_page(article, canonical_url):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{page_title}</title>
 <meta name="description" content="{page_desc}">
-<meta name="keywords" content="周义军,温州税务律师,浙江税务律师,涉税律师,{title}">
+<meta name="keywords" content="周义军,温州税务律师,浙江税务律师,全国税务律师,涉税律师,{title}">
 <meta name="author" content="周义军律师">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{canonical_url}">
@@ -369,7 +369,7 @@ def generate_comic_page(comic, canonical_url):
     title = comic['title']
     images = comic['images']
 
-    page_title = f"{title} - 普法漫画 | 周义军律师 · 温州税务律师"
+    page_title = f"{title} - 普法漫画 | 周义军律师 · 温州税务律师 · 全国接案"
     page_desc = f"周义军律师普法漫画：{title}。温州税务律师、浙江涉税争议解决专家，通过生动有趣的漫画形式，为您解读涉税法律问题，让法律知识触手可及。"
 
     # 生成图片列表（带 alt 和 loading=lazy）
@@ -397,7 +397,7 @@ def generate_comic_page(comic, canonical_url):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{page_title}</title>
 <meta name="description" content="{page_desc}">
-<meta name="keywords" content="周义军,温州税务律师,普法漫画,税务律师,{title}">
+<meta name="keywords" content="周义军,温州税务律师,全国税务律师,普法漫画,税务律师,{title}">
 <meta name="author" content="周义军律师">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{canonical_url}">
@@ -841,9 +841,9 @@ Sitemap: https://zhouyijunlawyer.com/sitemap.xml
     rss_xml = f'''<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>周义军律师 - 温州税务律师 · 浙江涉税争议解决专家</title>
+  <title>周义军律师 - 温州税务律师 · 浙江涉税争议解决专家 · 全国接案</title>
   <link>https://zhouyijunlawyer.com</link>
-  <description>温州税务律师周义军，浙江省涉税争议解决专家，专注税务稽查应对、税务行政诉讼、涉税刑事辩护。律师+税务师双证，15年以上经验。</description>
+  <description>全国税务律师周义军，温州税务律师、浙江省涉税争议解决专家，专注税务稽查应对、税务行政诉讼、涉税刑事辩护。律师+税务师双证，15年以上经验，全国接案。</description>
   <language>zh-CN</language>
   <lastBuildDate>{now_iso}</lastBuildDate>
   <atom:link href="https://zhouyijunlawyer.com/rss.xml" rel="self" type="application/rss+xml"/>
