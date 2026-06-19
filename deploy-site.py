@@ -445,7 +445,7 @@ def generate_comic_page(comic, canonical_url):
 <style>
 {ARTICLE_PAGE_CSS}
     /* 漫画页全宽布局，3列图片铺满屏幕（90vw 留白） */
-    .container {{ max-width: 90vw; padding: 0 16px; }}
+    .container {{ max-width: 85vw; padding: 0 16px; }}
     .article-body {{ max-width: 100% !important; }}
     @media (max-width: 768px) {{
       .container {{ padding: 0 16px; }}
