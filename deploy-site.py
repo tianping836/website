@@ -444,11 +444,12 @@ def generate_comic_page(comic, canonical_url):
 {breadcrumb_ld}
 <style>
 {ARTICLE_PAGE_CSS}
-    /* 漫画页容器加宽，让3列图片铺满屏幕 */
-    .container {{ max-width: 1160px; }}
-    @media (max-width: 1200px) {{ .container {{ max-width: 96vw; }} }}
+    /* 漫画页全宽布局，3列图片铺满屏幕 */
+    .container {{ max-width: 100%; padding: 0 32px; }}
+    .article-body {{ max-width: 100% !important; }}
     @media (max-width: 768px) {{
-      .article-body > div:first-child {{ grid-template-columns: repeat(2, 1fr) !important; }}
+      .container {{ padding: 0 16px; }}
+      .article-body > div:first-child {{ grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }}
     }}
     @media (max-width: 480px) {{
       .article-body > div:first-child {{ grid-template-columns: 1fr !important; }}
@@ -485,7 +486,7 @@ def generate_comic_page(comic, canonical_url):
       </div>
     </header>
 
-    <div class="article-body" style="max-width:1100px;margin:0 auto;">
+    <div class="article-body" style="width:100%;margin:0 auto;">
 {img_tags}    </div>
   </article>
 
