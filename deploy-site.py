@@ -373,11 +373,12 @@ def generate_comic_page(comic, canonical_url):
     page_title = f"{title} - 普法漫画 | 周义军律师 · 温州税务律师 · 全国接案"
     page_desc = f"周义军律师普法漫画：{title}。温州税务律师、浙江涉税争议解决专家，通过生动有趣的漫画形式，为您解读涉税法律问题，让法律知识触手可及。"
 
-    # 生成图片列表（带 alt 和 loading=lazy）
-    img_tags = ''
+    # 生成图片列表（带 alt 和 loading=lazy，3列网格布局）
+    img_tags = '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">\n'
     for i, img in enumerate(images):
         alt_text = f"{title} - 第{i+1}页"
-        img_tags += f'        <img src="/{img["file"]}" alt="{alt_text}" loading="lazy" style="width:100%;border-radius:8px;box-shadow:var(--shadow);margin-bottom:16px">\n'
+        img_tags += f'        <img src="/{img["file"]}" alt="{alt_text}" loading="lazy" style="width:100%;border-radius:8px;box-shadow:var(--shadow)">\n'
+    img_tags += '      </div>'
 
     breadcrumb_ld = f'''<script type="application/ld+json">
 {{
