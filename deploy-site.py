@@ -537,7 +537,7 @@ def main():
     os.makedirs(CACHE_IMG_DIR, exist_ok=True)
 
     if os.path.exists(COMICS_DIR):
-        dirnames = sorted([d for d in os.listdir(COMICS_DIR) if not d.startswith('.')])
+        dirnames = sorted([d for d in os.listdir(COMICS_DIR) if not d.startswith('.')], reverse=True)
         unchanged = 0
         for dirname in dirnames:
             dpath = os.path.join(COMICS_DIR, dirname)
