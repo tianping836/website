@@ -84,8 +84,25 @@ def _folder_hash(dpath):
     return h.hexdigest()
 
 
+def _icloud_download(fpath, timeout=120):
+    """触发 iCloud 文件下载（处理优化存储占位文件）。
+    macOS 下读取 evicted 文件会阻塞直到下载完成。"""
+    if not os.path.exists(fpath):
+        return False
+    start = time.time()
+    while time.time() - start < timeout:
+        try:
+            with open(fpath, 'rb') as f:
+                f.read(1)
+            return True
+        except (OSError, IOError):
+            time.sleep(2)
+    return False
+
+
 def _compress_image(src, dst):
-    """压缩单张图片"""
+    """压缩单张图片。先触发iCloud下载再压缩"""
+    _icloud_download(src)
     subprocess.run(["sips", "--resampleWidth", "600", "-s", "format", "jpeg",
                    "-s", "formatOptions", "60", src, "--out", dst],
                    capture_output=True, timeout=30)
@@ -610,6 +627,9 @@ def main():
                 tag = "🆕 新增" if folder_hash not in cache_comics else "📝 更新"
                 print(f"  {tag} {title[:45]}")
 
+            if not compressed:
+                print(f"  ⚠️ 跳过（无可用图片）: {title[:45]}")
+                continue
             total_kb = sum(x['size_kb'] for x in compressed)
             comics.append({"title": title, "images": compressed, "total_kb": total_kb, "folder_hash": folder_hash, "slug": _make_slug(title)})
             new_cache[folder_hash] = content_hash
